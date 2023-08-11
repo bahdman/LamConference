@@ -1,0 +1,66 @@
+@using LamConference.ViewModel
+@model LamConference.ViewModel.RegisterViewModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="~/css/index.css">
+</head>
+<body>
+    <!-- <div class="bgCover"></div> -->
+    <header>
+        <div class="header">
+            <div class="logo">LGFIX</div>
+        </div>
+    </header>
+<div class="coverRx"></div>
+
+    <div class="registerContainer flex">
+        <div class="RegContainer flex shadow">
+
+            <div class="regimg"><img src="~/images/33417731_7974764 1.svg" alt="Illustration Image"></div>
+
+            <div class="regContent">
+                <form asp-controller="Account" asp-action="Register">
+
+                    <h2>Sign Up</h2>
+
+                    <div class="accountDetails">
+
+                        <h5>Account Details</h5>
+                        <div class="inputField flex set">        
+                            <div class="emailField"><input class="left" asp-for="Username" placeholder="Username"><div class="icon emailIcon"><img src="~/images/user.svg" alt="User Logo"></div></div>
+
+                        </div>
+
+
+                        <div class="inputField flex account">
+                            <div class="passwordField"><input asp-for="Password" placeholder="Password"><div class="icon passwordIcon"><img src="~/images/key.svg" alt="Password Logo"></div></div>
+                            <div class="confirmPassword"><input asp-for="ConfirmPassword" placeholder="Confirm Password"><div class="icon keyICon"><img src="~/images/lock.svg" alt="Lock Logo"></div></div>
+                            <select asp-for="Role" asp-items="Html.GetEnumSelectList<Role>()">
+                                <option value="">Role</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+
+                    <div class="btnContent flex">
+                        <button class="blackBg btn">Submit</button>
+                        <h6>Registered Already? <span>Sign In</span></h6>                        
+                    </div>
+
+                </form>
+
+
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

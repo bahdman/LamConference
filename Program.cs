@@ -1,7 +1,9 @@
 using Microsoft.EntityFrameworkCore;
-using LamConference.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using LamConference.Data;
+using LamConference.Services;
+using LamConference.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +14,8 @@ builder.Services.AddDbContext<LamConference.Data.AppContext>(
 );
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 .AddEntityFrameworkStores<LamConference.Data.AppContext>();
+
+builder.Services.AddScoped<IAccount, AccountRepository>();
 
 var app = builder.Build();
 
