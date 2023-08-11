@@ -1,6 +1,7 @@
 using System;
 using LamConference.ViewModel;
 using LamConference.Handlers;
+using LamConference.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,14 +10,16 @@ namespace LamConference.Controllers{
         private readonly UserManager<IdentityUser> _UserManager;
         private readonly SignInManager<IdentityUser> _SignInManager;
         private readonly RoleManager<IdentityRole> _RoleManager;
+        private readonly IAccount _service;
 
         public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser>signInManager,
-            RoleManager<IdentityRole> roleManager
+            RoleManager<IdentityRole> roleManager, IAccount service
         )
         {
             _UserManager = userManager;
             _SignInManager = signInManager;
             _RoleManager = roleManager;
+            _service = service;
         }
 
         public ActionResult Register()
@@ -31,25 +34,25 @@ namespace LamConference.Controllers{
             //Add method that would check for the Role
             if(ModelState.IsValid)
             {
-                var user = new IdentityUser{
-                    UserName = viewModel.Username,
+                RoleViewModel model = new()
+                {
+                    Role = viewModel.Role
                 };
 
-                var userInstance = await _UserManager.CreateAsync(user, viewModel.Password);
-                if(userInstance.Succeeded)
+                var rolehandler = new RoleHandler();
+                var role = await rolehandler.RoleCheck(model);
+                if(role == "Nill")
                 {
-                    RoleViewModel model = new()
-                    {
-                        Role = viewModel.Role
-                    };
-
-                    var rolehandler = new RoleHandler();
-                    var roles = await rolehandler.RoleCheck(model);
-                    
-                    return RedirectToAction(nameof(Login));
-                    
+                    return View(viewModel);
                 }
+                bool instance = await _service.Register(viewModel, role);
+
+                if(instance == true)
+                {
+                    return RedirectToAction(nameof(Login));
+                }                  
             }
+
             return View(viewModel);
         }
 
@@ -59,14 +62,17 @@ namespace LamConference.Controllers{
         }
 
         [HttpPost]
-        public ActionResult Login(LoginViewModel viewModel)
+        public async Task<ActionResult> Login(LoginViewModel viewModel)
         {
             if(ModelState.IsValid)
             {
-                var instance = _SignInManager.PasswordSignInAsync(viewModel.Username, viewModel.Password, viewModel.RemeberMe, false);
-                return RedirectToAction("Index", "Home");     
+                bool instance = await _service.Login(viewModel);
+                if(instance == true)
+                {
+                    return RedirectToAction("Index", "Home");  
+                }     
             }
-            return View();
+            return View(viewModel);
         }
 
         [HttpPost]
