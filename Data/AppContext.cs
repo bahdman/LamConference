@@ -7,6 +7,7 @@ namespace LamConference.Data{
 
         public AppContext(DbContextOptions<AppContext> options) : base(options){}
 
-        DbSet<StudentData> StudentData{get; set;}
+        public DbSet<StudentData> StudentData{get; set;}
+        public DbSet<ReferenceID> ReferenceIDs{get; set;}
     }
 }
