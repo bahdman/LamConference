@@ -19,7 +19,6 @@ namespace LamConference.Controllers{
             return View();
         }
 
-
         [HttpPost]
         public async Task<ActionResult> Register(IDViewModel viewModel)
         {
@@ -42,6 +41,8 @@ namespace LamConference.Controllers{
             {
                 return RedirectToAction(nameof(Register));
             }
+
+            
             //Big Todo:: get ref ID and return to view in the input so you can
             //pick it up for saving along with student info
             return View();
