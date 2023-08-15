@@ -3,14 +3,16 @@ using System.ComponentModel.DataAnnotations;
 
 namespace LamConference.Models{
     public class StudentData{
-        public int Id{get; set;}
+        public Guid Id{get; set;}
         [DisplayName("First Name")]
         public string? FirstName{get; set;}
         [DisplayName("Last Name")]
         public string? LastName{get; set;}
+        public double Telephone{get; set;}
         public Level Level{get; set;}
         public string? Email{get; set;}
         public Department Department{get; set;}
+        public Guid RefId{get; set;}
     }
 
     public enum Level{

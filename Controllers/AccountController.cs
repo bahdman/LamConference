@@ -7,23 +7,18 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LamConference.Controllers{
     public class AccountController : Controller{
-        private readonly UserManager<IdentityUser> _UserManager;
         private readonly SignInManager<IdentityUser> _SignInManager;
-        private readonly RoleManager<IdentityRole> _RoleManager;
         private readonly IAccount _service;
 
-        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser>signInManager,
-            RoleManager<IdentityRole> roleManager, IAccount service
-        )
+        public AccountController(SignInManager<IdentityUser>signInManager, IAccount service)
         {
-            _UserManager = userManager;
             _SignInManager = signInManager;
-            _RoleManager = roleManager;
             _service = service;
         }
 
         public ActionResult Register()
         {
+            var test = Guid.NewGuid();
             return View();
         }
 
