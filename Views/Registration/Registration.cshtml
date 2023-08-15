@@ -1,0 +1,17 @@
+@using LamConference.Models
+@model LamConference.ViewModel.RegistrationViewModel
+
+<form asp-action="Registration" method="post">
+    <input asp-for="FirstName" placeholder="First Name">
+    <input asp-for="LastName" placeholder="Last Name">
+    <input asp-for="Telephone" placeholder="Phone Name">
+    <input asp-for="Email" placeholder="First Name">
+    <select asp-for="Level" asp-items="Html.GetEnumSelectList<Level>()">
+        <option value="">Level</option>
+    </select>
+    <select asp-for="Department" asp-items="Html.GetEnumSelectList<Department>()">
+        <option value="">Department</option>
+    </select>
+    <input asp-for="RefID">
+    <button>Submit</button>
+</form>
