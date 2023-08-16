@@ -35,17 +35,24 @@ namespace LamConference.Controllers{
 
 
         //Registration:: Collect user data.
-        public ActionResult Registration(Guid id)
+        public async Task<ActionResult> Registration(Guid id)
         {
-            if(id == Guid.Empty)
+            IDViewModel model = new(){RefID = id};
+            bool instance = await _service.IdCheck(model);
+
+            if(id == Guid.Empty && !instance)
             {
                 return RedirectToAction(nameof(Register));
             }
 
+            RegistrationViewModel viewModel = new(){
+                RefID = id
+            };
+
             
             //Big Todo:: get ref ID and return to view in the input so you can
             //pick it up for saving along with student info
-            return View();
+            return View(viewModel);
         }
 
         [HttpPost]
@@ -56,10 +63,15 @@ namespace LamConference.Controllers{
                 var instance = await _service.Registration(viewModel);
                 if(instance)
                 {
-                    return RedirectToAction("ok", "ok");//Big Todo:: Redirect to success page
+                    return RedirectToAction(nameof(Success));//Big Todo:: Redirect to success page
                 }
             // }
             return View(viewModel);
+        }
+
+        public ActionResult Success()
+        {
+            return View();
         }
     } 
 }
