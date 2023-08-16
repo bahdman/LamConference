@@ -1,7 +1,86 @@
 @using LamConference.Models
 @model LamConference.ViewModel.RegistrationViewModel
 
-<form asp-action="Registration" method="post">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - LamConference</title>
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="header flex">
+                <div class="logo"><h1><span class="caps">lam </span>Conference</h1></div>
+
+                <ul class="flex">
+                    <li><a asp-action="">About</a></li>
+                    <li><a asp-action="">Our Sponsors</a></li>
+                    <li><a asp-action="">What To Expect</a></li>
+                    <li class="aside"><a asp-controller="Registration" asp-action="Register"><button class="btn redBtn">Register</button></a></li>
+                </ul>
+
+            </div>
+        </nav>
+    </header>
+
+    <body>
+        <div class="mainContainer">
+            <div class="flex containerContent">
+                <div class="formSection">
+                    <div class="textContainer">
+                        <h2>Hello</h2>
+                        <h4>Kindly fill the form to reserve your spot.</h4>
+                        <h5>Do note that your Reference ID is valid until this form is submitted</h5>
+                    </div>
+
+                    <div class="form">
+                        <h5><span class="blueTxt">Reference ID</span>: @Model.RefID</h5>
+                        <div class="formContent grid">
+                            <form asp-action="Registration">
+
+                                <div class="nameFields flex fields">
+                                    <input asp-for="FirstName" placeholder="First Name">
+                                    <input asp-for="LastName" placeholder="Last Name">
+                                </div>
+
+                                <div class="contactFields flex fields">
+                                    <input asp-for="Telephone" placeholder="Phonenumber">
+                                    <input asp-for="Email" placeholder="Email">
+                                </div>
+
+                                <div class="acadDetailsFields flex fields">
+                                    <select asp-for="Level" asp-items="Html.GetEnumSelectList<Level>()">
+                                    <option value="">Level</option>
+                                    </select>
+                                    <select asp-for="Department" asp-items="Html.GetEnumSelectList<Department>()">
+                                        <option value="">Department</option>
+                                    </select>
+                                </div>
+                                
+
+                                <input type="hidden" asp-for="RefID">
+                                <button class="btn blackBtn">Submit</button>
+                            </form>   
+                        </div>
+                    </div>
+                </div>
+
+                <div class="illustrationSection">
+                    <div class="illustration"><img src="~/Images/3d-business-man-and-woman-working-with-laptop.png" alt="Illustration"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+</body>
+</html>
+
+
+<!-- 
+@* <form asp-action="Registration" method="post">
     <input asp-for="FirstName" placeholder="First Name">
     <input asp-for="LastName" placeholder="Last Name">
     <input asp-for="Telephone" placeholder="Phone Name">
@@ -14,4 +93,4 @@
     </select>
     <input asp-for="RefID">
     <button>Submit</button>
-</form>
+</form> *@ -->

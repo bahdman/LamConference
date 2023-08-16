@@ -1,6 +1,50 @@
 @model LamConference.ViewModel.IDViewModel
 
-<form asp-action="Register" method="post">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - LamConference</title>
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="header flex">
+                <div class="logo"><h1><span class="caps">lam </span>Conference</h1></div>
+
+                <ul class="flex">
+                    <li><a asp-action="">About</a></li>
+                    <li><a asp-action="">Our Sponsors</a></li>
+                    <li><a asp-action="">What To Expect</a></li>
+                    <li class="aside"><a asp-controller="Registration" asp-action="Register"><button class="btn redBtn">Register</button></a></li>
+                </ul>
+
+            </div>
+        </nav>
+    </header>
+
+    <body>
+        <div class="center flex">
+            <div class="regContainer flex">
+                <div class="containerText">
+                    <h3>Kindly input reference your reference ID</h2>
+                    <h5>Do note that Ref ID can only be used once</h5>
+                </div>
+
+                <div class="containerInput">
+                    <form class="flex" asp-action="Register">
+                        <input asp-for="RefID" placeholder="Reference ID">
+                        <button class="btn blackBtn">Register</button> 
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</body>
+</html>
+<!-- @* <form asp-action="Register" method="post">
     <input asp-for="RefID">
     <button>Submit</button>
-</form>
+</form> *@ -->
