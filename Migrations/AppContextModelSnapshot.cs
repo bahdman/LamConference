@@ -57,8 +57,8 @@ namespace LamConference.Migrations
                     b.Property<Guid>("RefId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<double>("Telephone")
-                        .HasColumnType("float");
+                    b.Property<string>("Telephone")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

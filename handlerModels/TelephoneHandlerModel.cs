@@ -1,5 +1,5 @@
 namespace LamConference.HandlerModels{
     public class TelephoneHandlerModel{
-        public double Value{get; set;}
+        public string? Value{get; set;}
     }
 }

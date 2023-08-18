@@ -49,21 +49,17 @@ namespace LamConference.Controllers{
                 RefID = id
             };
 
-            
-            //Big Todo:: get ref ID and return to view in the input so you can
-            //pick it up for saving along with student info
             return View(viewModel);
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Registration(RegistrationViewModel viewModel)
         {
-            // if(ModelState.IsValid)
-            // {
                 var instance = await _service.Registration(viewModel);
                 if(instance)
                 {
-                    return RedirectToAction(nameof(Success));//Big Todo:: Redirect to success page
+                    return RedirectToAction(nameof(Success));
                 }
             // }
             return View(viewModel);

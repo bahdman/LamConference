@@ -18,6 +18,7 @@ namespace LamConference.Controllers{
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> RefID(GenerateIDViewModel viewModel)
         {
             if(ModelState.IsValid)

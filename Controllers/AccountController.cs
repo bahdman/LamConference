@@ -57,6 +57,7 @@ namespace LamConference.Controllers{
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel viewModel)
         {
             if(ModelState.IsValid)
@@ -71,6 +72,7 @@ namespace LamConference.Controllers{
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> LogOut()
         {
             await _SignInManager.SignOutAsync();

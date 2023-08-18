@@ -16,8 +16,9 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 .AddEntityFrameworkStores<LamConference.Data.AppContext>();
 
 builder.Services.AddScoped<IAccount, AccountRepository>();
-builder.Services.AddScoped<IIdGenerator, IDRepository>();
+builder.Services.AddScoped<IIdGenerator, ReferenceIDRepository>();
 builder.Services.AddScoped<IRegistration, RegistrationRepository>();
+builder.Services.AddScoped<IUser, UserRepository>();
 
 var app = builder.Build();
 
