@@ -20,6 +20,8 @@ namespace LamConference.Handlers{
 
         public async Task<string> RoleCheck(RoleViewModel model)
         {
+            // Big TODO:: Simplify this peice of code.
+            // Use the enum class.
             var role = "";
             if(model.Role == Role.Admin)
             {

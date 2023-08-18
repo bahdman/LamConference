@@ -10,13 +10,13 @@ namespace LamConference.Handlers{
         {
             if(model != null)
             {
-                var letters = @"^[A-Za-z]+$";
+                //Big TODO:: Work on the RegEX. If there is space in the word, it throws an error.
+                var letters = @"^[ ]?[a-zA-Z]+[ ]*$";
                 if(Regex.IsMatch(model.FirstName, letters, RegexOptions.IgnoreCase) 
                 && Regex.IsMatch(model.LastName, letters, RegexOptions.IgnoreCase))
                 {
                     return true;
                 }
-
                 return false;
             }
             return false;
@@ -38,9 +38,13 @@ namespace LamConference.Handlers{
 
         private bool TelephoneCheck(TelephoneHandlerModel model)
         {
+            //Big TODO:: Use RegEx to check phone number validity.
+
+
             if(model != null)
             {
-                if(model.Value >=0)
+                var pattern = @"^[+]?[0789]?[0-9]{10}$";
+                if(Regex.IsMatch(model.Value, pattern))
                 {
                     return true;
                 }

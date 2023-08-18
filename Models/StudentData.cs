@@ -8,7 +8,7 @@ namespace LamConference.Models{
         public string? FirstName{get; set;}
         [DisplayName("Last Name")]
         public string? LastName{get; set;}
-        public double Telephone{get; set;}
+        public string? Telephone{get; set;}
         public Level Level{get; set;}
         public string? Email{get; set;}
         public Department Department{get; set;}

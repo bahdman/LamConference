@@ -9,7 +9,7 @@ namespace LamConference.ViewModel{
         [DisplayName("Last Name")]
         public string? LastName{get; set;}
         [DisplayName("Phone Number")]
-        public double Telephone{get; set;}
+        public string? Telephone{get; set;}
         [DataType(DataType.EmailAddress)]
         public string? Email{get; set;}
         public Level Level{get; set;}

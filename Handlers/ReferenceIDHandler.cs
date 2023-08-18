@@ -2,17 +2,17 @@ using LamConference.Models;
 using LamConference.ViewModel;
 
 namespace LamConference.Handlers{
-    public class IDHandler{
+    public class ReferenceIDHandler{
         private readonly Data.AppContext _context;
-        public IDHandler(Data.AppContext context)
+        public ReferenceIDHandler(Data.AppContext context)
         {
             _context = context;
         }
 
         public async Task<ReferenceID> FindID(Guid id)
         {
-            var test = await _context.ReferenceIDs.FindAsync(id);
-            return test;//Big Todo:: return the awaitable once afer test
+            //Big TODO::Add exception handler.
+            return await _context.ReferenceIDs.FindAsync(id);
         }
 
         public async Task<List<ReferenceID>> GetReferenceID(GenerateIDViewModel viewModel)
