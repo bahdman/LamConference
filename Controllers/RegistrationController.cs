@@ -1,4 +1,3 @@
-using System.Text.RegularExpressions;
 using LamConference.Services;
 using LamConference.ViewModel;
 using Microsoft.AspNetCore.Mvc;
@@ -15,7 +14,7 @@ namespace LamConference.Controllers{
 
         //Register:: Checks Ref ID for validaity
         public ActionResult Register()
-        {            
+        {
             return View();
         }
 

@@ -18,24 +18,13 @@ namespace LamConference.Handlers{
 
         
 
-        public async Task<string> RoleCheck(RoleViewModel model)
+        public string RoleCheck(RoleViewModel model)
         {
-            // Big TODO:: Simplify this peice of code.
-            // Use the enum class.
-            var role = "";
-            if(model.Role == Role.Admin)
+            bool enumCheck = Enum.IsDefined(model.Role);
+            if(enumCheck)
             {
-                return "admin";
-            }
-            else if(model.Role == Role.Finance)
-            {
-                return "finance";
-            }
-            else if(model.Role == Role.IT)
-            {
-                return "it";
-            }            
-            
+               return Enum.GetName<Role>(model.Role);
+            }           
             return "Nill";
         }
     }

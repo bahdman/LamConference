@@ -26,7 +26,6 @@ namespace LamConference.Controllers{
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel viewModel)
         {
-            //Add method that would check for the Role
             if(ModelState.IsValid)
             {
                 RoleViewModel model = new()
@@ -35,11 +34,13 @@ namespace LamConference.Controllers{
                 };
 
                 var rolehandler = new RoleHandler();
-                var role = await rolehandler.RoleCheck(model);
+                var role = rolehandler.RoleCheck(model);
+
                 if(role == "Nill")
                 {
                     return View(viewModel);
                 }
+
                 bool instance = await _service.Register(viewModel, role);
 
                 if(instance == true)

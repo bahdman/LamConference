@@ -1,12 +1,14 @@
 using LamConference.Services;
 using LamConference.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LamConference.Controllers{
-    public class UserController : Controller{
+    [Authorize(Roles = "IT")]
+    public class ITController : Controller{
         private readonly IUser _service;
-        private readonly IRegistration _registrationService;
-        public UserController(IUser service)
+    
+        public ITController(IUser service)
         {
             _service = service;
         }
