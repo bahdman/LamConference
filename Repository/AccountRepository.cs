@@ -25,6 +25,7 @@ namespace LamConference.Repository{
             {
                 UserName = viewModel.Username
             };
+            //Big TODO::Add exception handler.
             var instance = await _userManager.CreateAsync(user, viewModel.Password);
             if(instance.Succeeded)
             {

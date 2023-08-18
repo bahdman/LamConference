@@ -7,7 +7,7 @@ using System.Net.Mail;
 using System.Net;
 
 namespace LamConference.Repository{
-    public class RegistrationRepository : IDHandler, IRegistration, IMailService{
+    public class RegistrationRepository : ReferenceIDHandler, IRegistration, IMailService{
 
         private readonly Data.AppContext _context;
 
@@ -20,7 +20,7 @@ namespace LamConference.Repository{
         {
             if(viewModel != null)
             {
-                var check = await FindID(viewModel.RefID);//Test
+                var check = await FindID(viewModel.RefID);
                 if(check != null)
                 {
                     return true;
@@ -35,11 +35,11 @@ namespace LamConference.Repository{
         {
             ModelHandler handler = new(){};
             bool status = handler.RegistrationModel(viewModel);
-            if(status)//Proper validation::Use handler to validate the model information
+            if(status)
             {
                 // IDHandler.
-                var test = await FindID(viewModel.RefID);//Test
-                if(test == null || test.Id == Guid.Empty)
+                var isRefIDValid = await FindID(viewModel.RefID);
+                if(isRefIDValid == null || isRefIDValid.Id == Guid.Empty)
                 {
                     return false;
                 }
@@ -59,20 +59,21 @@ namespace LamConference.Repository{
                     Email = data.Email
                 };
 
+                //Big TODO::Add exception handler
                 await _context.StudentData.AddAsync(data);
-                _context.ReferenceIDs.Remove(test);
+                _context.ReferenceIDs.Remove(isRefIDValid);
                 await _context.SaveChangesAsync();
 
                 SendMail(model);
 
                 return true;
             }
-            //check if regId is valid(IN DB) before registering user;
             return false;
         }
 
         public bool SendMail(MailHandlerModel model)
         {
+            //Big TODO::Add exception handler.
             using var client = new SmtpClient();
             client.Host = "smtp.gmail.com";
             client.Port = 587;

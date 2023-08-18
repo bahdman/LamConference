@@ -5,11 +5,11 @@ using LamConference.ViewModel;
 using LamConference.Handlers;
 
 namespace LamConference.Repository{
-    public class IDRepository : IDHandler, IIdGenerator{
+    public class ReferenceIDRepository : ReferenceIDHandler, IIdGenerator{
 
         private readonly Data.AppContext _context;
 
-        public IDRepository(Data.AppContext context) : base(context)
+        public ReferenceIDRepository(Data.AppContext context) : base(context)
         {
             _context = context;
         }
@@ -25,20 +25,10 @@ namespace LamConference.Repository{
                         Id = item.Id
                     };
 
+                    //Big TODO::Add exception handler.
                     await _context.ReferenceIDs.AddAsync(instance);    
                     await _context.SaveChangesAsync();  
                 }
-
-                // for(int i=0; i<IDListHelper.Count; i++)
-                // {
-                //     ReferenceID instance = new (){
-                //         Id = Guid.NewGuid()
-                //     };
-
-                //     await _context.ReferenceIDs.AddAsync(instance);    
-                //     await _context.SaveChangesAsync();      
-                // }
-
                 return true;
             }
             return false;
