@@ -15,7 +15,7 @@ namespace LamConference.Controllers{
 
         public async Task<ActionResult> Dashboard()
         {
-            var properties = await _service.DisplayProperties();
+            var properties = await _service.FinanceDisplayProperties();
             return View(properties);
         }
     }

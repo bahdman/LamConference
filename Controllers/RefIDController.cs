@@ -4,14 +4,16 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LamConference.Controllers{
-    [Authorize(Roles = "Finance")]
+    [Authorize(Roles = "Finance, IT")]
     public class RefIDController : Controller{
 
-        private readonly IIdGenerator _service;
+        private readonly IIdGenerator _idService;
+        private readonly IUser _userService;
 
-        public RefIDController(IIdGenerator service)
+        public RefIDController(IIdGenerator idService, IUser userService)
         {
-            _service = service;
+            _idService = idService;
+            _userService = userService;
         }
 
         public ActionResult GenerateID()
@@ -25,14 +27,20 @@ namespace LamConference.Controllers{
         {
             if(ModelState.IsValid)
             {
-                var instance = await _service.IDGenerator(viewModel);
+                var instance = await _idService.IDGenerator(viewModel);
                 if(instance)
                 {
-                    return RedirectToAction("success", "ok");//FiananceDashboard
+                    return RedirectToAction(nameof(ViewGeneratedIDs));//FiananceDashboard
                 }
             }
 
             return View(viewModel);
+        }
+
+
+        public async Task<IActionResult> ViewGeneratedIDs()
+        {
+            return View(await _userService.GetAllReferenceID());
         }
 
         

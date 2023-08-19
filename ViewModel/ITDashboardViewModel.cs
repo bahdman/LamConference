@@ -2,10 +2,9 @@ using System.ComponentModel;
 using LamConference.Models;
 
 namespace LamConference.ViewModel{
-    public class DashboardViewModel{
+    public class ITDashboardViewModel{
         public string? FirstName{get; set;}
         public string? LastName{get; set;}
-        // public List<string>? Test{get; set;}
         public string? Telephone{get; set;}
         [DisplayName("Department")]
         public Department Department{get; set;}
@@ -18,5 +17,7 @@ namespace LamConference.ViewModel{
         public int TotalGeneratedID{get; set;}
         [DisplayName("Registered")]
         public int TotalRegisteredStudents{get; set;}
+        [DisplayName("Estimated Amount")]
+        public int EstimatedAmount{get; set;}
     }
 }

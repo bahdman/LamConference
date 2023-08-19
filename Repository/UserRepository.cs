@@ -12,34 +12,13 @@ namespace LamConference.Repository{
         {
             _context = context;
         }
-        public async Task<List<ReferenceID>> GetAllID()
+
+        public async Task<List<ReferenceID>> GetAllReferenceID()//
         {
             return await _context.ReferenceIDs.ToListAsync();
         }
-        public List<ReferenceID> AvailableIDs()
-        {
-            return _context.ReferenceIDs.ToList();
-        }
 
-        public async Task<List<StudentData>> GetAllStudents()
-        {
-            return await _context.StudentData.ToListAsync();
-        }
-
-        public int GetTotalStudents()
-        {
-            return _context.StudentData.ToList().Count;
-        }
-
-        public int TotalGeneratedID()
-        {
-            var totalStudentData = _context.StudentData.ToList().Count;
-            var totalReferenceID = _context.ReferenceIDs.ToList().Count;
- 
-            return totalStudentData + totalReferenceID;
-        }
-
-        public async Task<bool> FindRegisteredStudent(Guid id)
+        public async Task<bool> FindRegisteredStudent(Guid id)//
         {
             if(id != Guid.Empty)
             {
@@ -54,7 +33,7 @@ namespace LamConference.Repository{
             return false;
         }
 
-        public async Task<bool> DeleteReferenceID(IDViewModel viewModel)
+        public async Task<bool> DeleteReferenceID(IDViewModel viewModel)//
         {
             if(viewModel != null)
             {
@@ -81,32 +60,60 @@ namespace LamConference.Repository{
             return false;
         }
 
-        public async Task<List<DashboardViewModel>> DisplayProperties()
+        public async Task<List<FinanceDashboardViewModel>> FinanceDisplayProperties()
         {
-            var studentDatas = await GetAllStudents();
-            var avaliableRefID = AvailableIDs().Count;
-            var totalGeneratedRefId =  TotalGeneratedID();
-            var totalRegisteredStudents = GetTotalStudents();
-            List<DashboardViewModel> model = new(){};
-            foreach(var item in studentDatas)
+            var displayProperties = await DisplayProperties();
+            List<FinanceDashboardViewModel> model = new(){};
+            foreach(var item in displayProperties)
             {
-                DashboardViewModel testInstance = new(){
+                FinanceDashboardViewModel instance = new(){
                     FirstName = item.FirstName,
                     LastName = item.LastName,
                     Telephone = item.Telephone,
                     Department = item.Department,
                     Level = item.Level,
-                    RefID = item.RefId,
-                    AvailableRefID = avaliableRefID,
-                    TotalGeneratedID = totalGeneratedRefId,
-                    TotalRegisteredStudents = totalRegisteredStudents
+                    RefID = item.RefID,
+                    AvailableRefID = item.AvailableRefID,
+                    TotalGeneratedID = item.TotalGeneratedID,
+                    TotalRegisteredStudents = item.TotalRegisteredStudents
                 };
 
-                model.Add(testInstance);
+                model.Add(instance);
             }
 
             return model;
         }
 
+        public async Task<List<ITDashboardViewModel>> ITDisplayProperties()
+        {
+            var displayProperties = await DisplayProperties();
+            var estimatedAmount = "FROM DB"; //Big TODO:: would come straight from the DB.
+            List<ITDashboardViewModel> model = new(){};
+            foreach(var item in displayProperties)
+            {
+                ITDashboardViewModel instance = new(){
+                    FirstName = item.FirstName,
+                    LastName = item.LastName,
+                    Telephone = item.Telephone,
+                    Department = item.Department,
+                    Level = item.Level,
+                    RefID = item.RefID,
+                    AvailableRefID = item.AvailableRefID,
+                    TotalGeneratedID = item.TotalGeneratedID,
+                    TotalRegisteredStudents = item.TotalRegisteredStudents,
+                    EstimatedAmount = 3000000
+                };
+
+                model.Add(instance);
+            }
+
+            return model;
+        }
+
+        public async Task<bool> SetEventPrice(PriceViewModel viewModel)
+        {
+            //Big TODO:: Use RegEx to validate the price ==> .00 should be optional.
+            return false;
+        }
     }
 }

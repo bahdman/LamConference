@@ -1,5 +1,5 @@
 @using LamConference.ViewModel
-@model IEnumerable<LamConference.ViewModel.DashboardViewModel>
+@model IEnumerable<LamConference.ViewModel.FinanceDashboardViewModel>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,6 +17,7 @@
 
                 <ul class="flex">
                     <li><a asp-controller="RefID" asp-action="GenerateID">Generate RefID</a></li>
+                    <li><a asp-controller="RefID" asp-action="ViewGeneratedIDs">Generate RefID</a></li>
                     <li class="aside">
                         <form asp-controller="Account" asp-action="LogOut" method="post">
                             <button class="btn redBtn">Logout</button>
@@ -41,7 +42,6 @@
                         <th>@Html.DisplayNameFor(model => model.AvailableRefID)</th>
                         <th>@Html.DisplayNameFor(model => model.TotalGeneratedID)</th>
                         <th>@Html.DisplayNameFor(model => model.TotalRegisteredStudents)</th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -57,12 +57,6 @@
                             <td>@Html.DisplayFor(model => item.AvailableRefID)</td>
                             <td>@Html.DisplayFor(model => item.TotalGeneratedID)</td>
                             <td>@Html.DisplayFor(model => item.TotalRegisteredStudents)</td>
-                            <td>
-                                <form asp-action="DeleteReferenceID" asp-route-id="@item.RefID">
-                                    @* <input asp-for="item.RefID" type="hidden"> *@
-                                    <button>delete</button>
-                                </form>
-                            </td>
                         </tr>
                     }
                 </tbody>

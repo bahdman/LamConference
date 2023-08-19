@@ -3,12 +3,11 @@ using LamConference.ViewModel;
 
 namespace LamConference.Services{
     public interface IUser{
-        Task<List<ReferenceID>> GetAllID();
-        Task<List<StudentData>> GetAllStudents();
-        int GetTotalStudents();
         Task<bool> FindRegisteredStudent(Guid id);
         Task<bool> DeleteReferenceID(IDViewModel viewModel);
-        int TotalGeneratedID();
-        Task<List<DashboardViewModel>> DisplayProperties();
+        Task<List<ReferenceID>> GetAllReferenceID();
+        Task<List<FinanceDashboardViewModel>> FinanceDisplayProperties();
+        Task<List<ITDashboardViewModel>> ITDisplayProperties();
+        Task<bool> SetEventPrice(PriceViewModel viewModel);
     }
 }

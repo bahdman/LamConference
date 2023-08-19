@@ -15,7 +15,7 @@ namespace LamConference.Controllers{
 
         public async Task<ActionResult> Dashboard()
         {
-            var properties = await _service.DisplayProperties();
+            var properties = await _service.ITDisplayProperties();
             return View(properties);
         }
 
@@ -33,6 +33,16 @@ namespace LamConference.Controllers{
             }
 
             return RedirectToAction(nameof(Dashboard));
+        }
+
+        public async Task<IActionResult> Pricing(PriceViewModel viewModel)
+        {
+            if(ModelState.IsValid)
+            {
+                await _service.SetEventPrice(viewModel);
+            }
+
+            return View(viewModel);
         }
     }
 }
