@@ -1,5 +1,5 @@
 @using LamConference.ViewModel
-@model IEnumerable<LamConference.ViewModel.FinanceDashboardViewModel>
+@model IList<LamConference.ViewModel.FinanceDashboardViewModel>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,14 +10,14 @@
     <link rel="stylesheet" href="~/css/style.css" asp-append-version="true">
 </head>
 <body>
-    <header>
+    <header class="dashboardHeader">
         <nav>
             <div class="header flex">
                 <div class="logo"><h1><span class="caps">lam </span>Conference</h1></div>
 
                 <ul class="flex">
                     <li><a asp-controller="RefID" asp-action="GenerateID">Generate RefID</a></li>
-                    <li><a asp-controller="RefID" asp-action="ViewGeneratedIDs">Generate RefID</a></li>
+                    <li><a asp-controller="RefID" asp-action="ViewGeneratedIDs">View RefIDs</a></li>
                     <li class="aside">
                         <form asp-controller="Account" asp-action="LogOut" method="post">
                             <button class="btn redBtn">Logout</button>
@@ -29,38 +29,64 @@
     </header>
 
     <body>
-        <div class="mainContainer centerTxt">
-            <table>
-                <thead>
-                    <tr>
-                        <th>@Html.DisplayNameFor(model => model.FirstName)</th>
-                        <th>@Html.DisplayNameFor(model => model.LastName)</th>
-                        <th>@Html.DisplayNameFor(model => model.Telephone)</th>
-                        <th>@Html.DisplayNameFor(model => model.Level)</th>
-                        <th>@Html.DisplayNameFor(model => model.Department)</th>
-                        <th>@Html.DisplayNameFor(model => model.RefID)</th>
-                        <th>@Html.DisplayNameFor(model => model.AvailableRefID)</th>
-                        <th>@Html.DisplayNameFor(model => model.TotalGeneratedID)</th>
-                        <th>@Html.DisplayNameFor(model => model.TotalRegisteredStudents)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach(var item in Model)
-                    {
-                        <tr>
-                            <td>@Html.DisplayFor(model => item.FirstName)</td>
-                            <td>@Html.DisplayFor(model => item.LastName)</td>
-                            <td>@Html.DisplayFor(model => item.Telephone)</td>
-                            <td>@Html.DisplayFor(model => item.Level)</td>
-                            <td>@Html.DisplayFor(model => item.Department)</td>
-                            <td>@Html.DisplayFor(model => item.RefID)</td>
-                            <td>@Html.DisplayFor(model => item.AvailableRefID)</td>
-                            <td>@Html.DisplayFor(model => item.TotalGeneratedID)</td>
-                            <td>@Html.DisplayFor(model => item.TotalRegisteredStudents)</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
+        <div class="displayContainer">
+            <div class="statistics">
+
+                <h2>Idan, <span class="text">welcome</span></h2>
+
+                <div class="statisticsCards flex">
+                    <div class="card flex greenCard">
+                        <div class="cardContent flex">
+                            <h3>@Html.DisplayNameFor(model => model[0].AvailableRefID)</h3>
+                            <h2>@Html.DisplayFor(model => Model.FirstOrDefault().AvailableRefID)</h2>
+                        </div>
+                    </div>
+                    <div class="card flex redCard">
+                        <div class="cardContent flex">
+                            <h3>@Html.DisplayNameFor(model => model[0].TotalGeneratedID)</h3>
+                            <h2>@Html.DisplayFor(model => Model.FirstOrDefault().TotalGeneratedID)</h2>
+                        </div>
+                    </div>
+                    <div class="card flex blueCard">
+                        <div class="cardContent flex">
+                            <h3>@Html.DisplayNameFor(model => model[0].TotalRegisteredStudents)</h3>
+                            <h2>@Html.DisplayFor(model => Model.FirstOrDefault().TotalRegisteredStudents)</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashTblContainer">
+                <div class="tableContainer">
+                    <div class="table viewRefIDtbl">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>S/N</th>
+                                    <th>@Html.DisplayNameFor(model => model[0].FirstName)</th>
+                                    <th>@Html.DisplayNameFor(model => model[0].LastName)</th>
+                                    <th>@Html.DisplayNameFor(model => model[0].Level)</th>
+                                    <th>@Html.DisplayNameFor(model => model[0].Department)</th>
+                                    <th>@Html.DisplayNameFor(model => model[0].Email)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                               @for(int i=0; i<Model.Count; i++)
+                                {
+                                    <tr>
+                                        <td></td>
+                                        <td>@Html.DisplayFor(model => Model[i].FirstName)</td>
+                                        <td>@Html.DisplayFor(model => Model[i].LastName)</td>
+                                        <td>@Html.DisplayFor(model => Model[i].Level)</td>
+                                        <td>@Html.DisplayFor(model => Model[i].Department)</td>
+                                        <td>@Html.DisplayFor(model => Model[i].Email)</td>
+                                    </tr>
+                                }
+                                    
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
         </div>
     </body>
 </body>

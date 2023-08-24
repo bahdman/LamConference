@@ -43,22 +43,45 @@
                             <form asp-action="Registration">
 
                                 <div class="nameFields flex fields">
-                                    <input asp-for="FirstName" placeholder="First Name">
-                                    <input asp-for="LastName" placeholder="Last Name">
+                                    <div class="column">
+                                        <input asp-for="FirstName" placeholder="First Name">
+                                        <span asp-validation-for="FirstName" class="error"></span>
+                                    </div>
+                                    <div class="column">
+                                        <input asp-for="LastName" placeholder="Last Name">
+                                        <span asp-validation-for="LastName" class="error"></span>
+                                    </div>
                                 </div>
 
                                 <div class="contactFields flex fields">
-                                    <input asp-for="Telephone" placeholder="Phonenumber">
-                                    <input asp-for="Email" placeholder="Email">
+                                    <div class="column">
+                                        <input asp-for="Telephone" placeholder="Phonenumber">
+                                        <span asp-validation-for="Telephone" class="error"></span>
+                                    </div>
+                                    <div class="column">
+                                        <input asp-for="Email" placeholder="Email">
+                                        <span asp-validation-for="Email" class="error"></span>
+                                    </div>
+                                    
+                                    
                                 </div>
 
                                 <div class="acadDetailsFields flex fields">
-                                    <select asp-for="Level" asp-items="Html.GetEnumSelectList<Level>()">
-                                    <option value="">Level</option>
-                                    </select>
-                                    <select asp-for="Department" asp-items="Html.GetEnumSelectList<Department>()">
-                                        <option value="">Department</option>
-                                    </select>
+                                    <div class="column">
+                                        <select asp-for="Level" asp-items="Html.GetEnumSelectList<Level>()">
+                                            <option value="">Level</option>
+                                        </select>
+                                        <span asp-validation-for="Level" class="error"></span>
+                                    </div>
+                                    
+                                    <div class="column">
+                                        <select asp-for="Department" asp-items="Html.GetEnumSelectList<Department>()">
+                                            <option value="">Department</option>
+                                        </select>
+                                        <span asp-validation-for="Department" class="error"></span>
+                                    </div>
+                                    
+                                    
                                 </div>
                                 
 

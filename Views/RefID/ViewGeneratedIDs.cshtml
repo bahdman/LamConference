@@ -1,0 +1,63 @@
+@using LamConference.ViewModel
+@model IList<LamConference.ViewModel.RefIDViewModel>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - LamConference</title>
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="header flex">
+                <div class="logo"><h1><span class="caps">lam </span>Conference</h1></div>
+
+                <ul class="flex">
+                    <li><a asp-controller="@Model[0].ReturnController" asp-action="Dashboard">Dashboard</a></li>
+                    <li><a asp-controller="RefID" asp-action="GenerateID">Generate RefID</a></li>
+                    <li class="aside">
+                        <form asp-controller="Account" asp-action="LogOut" method="post">
+                            <button class="btn redBtn">Logout</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+        <div class="tblContainer flex">
+            <div class="tableContainer">
+                <div class="table viewRefIDtbl">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>S/N</th>
+                                <th>@Html.DisplayNameFor(model => model[0].ID)</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for(int i=0; i<Model.Count; i++)
+                            {
+                                <tr>
+                                    <td></td>
+                                    <td>@Html.DisplayFor(model => Model[i].ID)</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card flex mgTop">
+                <div class="cardContent flex">
+                    <h3>Total IDs</h3>
+                    <h2>@Html.DisplayFor(model => model.FirstOrDefault().AvailableIDs)</h2>
+                </div>
+            </div>
+        </div>
+</body>
+</html>

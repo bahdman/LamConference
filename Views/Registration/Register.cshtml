@@ -36,6 +36,7 @@
                 <div class="containerInput">
                     <form class="flex" asp-action="Register">
                         <input asp-for="RefID" placeholder="Reference ID">
+                        <span asp-validation-for="RefID" class="error cnt"></span>
                         <button class="btn blackBtn">Register</button> 
                     </form>
                 </div>
