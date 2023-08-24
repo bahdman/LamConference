@@ -30,7 +30,7 @@ namespace LamConference.Models{
 
     public enum Department{
         [Display(Name = "Accounting")]
-        Accounting,
+        Accounting = 1,
         [Display(Name = "Business Administration")]
         BusinessAdministration,
         [Display(Name = "Biochemistry")]
