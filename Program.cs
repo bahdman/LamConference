@@ -1,7 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using LamConference.Data;
 using LamConference.Services;
 using LamConference.Repository;
 
@@ -19,6 +17,9 @@ builder.Services.AddScoped<IAccount, AccountRepository>();
 builder.Services.AddScoped<IIdGenerator, ReferenceIDRepository>();
 builder.Services.AddScoped<IRegistration, RegistrationRepository>();
 builder.Services.AddScoped<IUser, UserRepository>();
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+// var test = WebApplication.CreateBuilder(Host.CreateApplicationBuilder().Environment.EnvironmentName = "Production");
 
 var app = builder.Build();
 
@@ -39,6 +40,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    //Big TODO:: change back to home index when home page is ready
+    pattern: "{controller=Registration}/{action=Register}/{id?}");
 
 app.Run();
