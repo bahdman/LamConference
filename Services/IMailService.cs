@@ -2,6 +2,6 @@ using LamConference.HandlerModels;
 
 namespace LamConference.Services{
     public interface IMailService{
-        bool SendMail(MailHandlerModel model);
+        Task<bool> SendMail(MailHandlerModel model);
     }
 }

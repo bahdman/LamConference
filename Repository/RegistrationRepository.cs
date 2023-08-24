@@ -10,10 +10,17 @@ namespace LamConference.Repository{
     public class RegistrationRepository : ReferenceIDHandler, IRegistration, IMailService{
 
         private readonly Data.AppContext _context;
+        private readonly IConfiguration _config;
+        private readonly IWebHostEnvironment _hostEnv;
 
-        public RegistrationRepository(Data.AppContext context) : base(context)
+        public RegistrationRepository(Data.AppContext context,
+            IConfiguration config,
+            IWebHostEnvironment hostEnv
+        ) : base(context)
         {
             _context = context;
+            _config = config;
+            _hostEnv = hostEnv;
         }
 
         public async Task<bool> IdCheck(IDViewModel viewModel)
@@ -33,10 +40,10 @@ namespace LamConference.Repository{
 
         public async Task<bool> Registration(RegistrationViewModel viewModel)
         {
-            ModelHandler handler = new(){};
-            bool status = handler.RegistrationModel(viewModel);
-            if(status)
-            {
+            // ModelHandler handler = new(){};
+            // bool status = handler.RegistrationModel(viewModel);
+            // if(status)
+            // {
                 // IDHandler.
                 var isRefIDValid = await FindID(viewModel.RefID);
                 if(isRefIDValid == null || isRefIDValid.Id == Guid.Empty)
@@ -67,32 +74,39 @@ namespace LamConference.Repository{
                 SendMail(model);
 
                 return true;
-            }
+            // }
             return false;
         }
 
-        public bool SendMail(MailHandlerModel model)
+        public async  Task<bool> SendMail(MailHandlerModel model)
         {
             //Big TODO::Add exception handler.
-            using var client = new SmtpClient();
-            client.Host = "smtp.gmail.com";
-            client.Port = 587;
+             using var client = new SmtpClient();
+            client.Host = _config["EmailLogs:Host"];
+            client.Port = Convert.ToInt32(_config["EmailLogs:Port"]);
             client.DeliveryMethod = SmtpDeliveryMethod.Network;
             client.UseDefaultCredentials = false;
             client.EnableSsl = true;
-            client.Credentials = new NetworkCredential("anetoroselumese@gmail.com", "nqsskzwcnlcrjqrq");
-            using var message = new MailMessage(
-                from: new MailAddress("anetoroselumese@gmail.com", "LAM Conference"),
+            client.Credentials = new NetworkCredential(_config["EmailLogs:MailingAddress"],
+             _config["EmailLogs:SecurityKey"]
+            );
+
+            MailMessage message = new MailMessage(
+                from: new MailAddress(_config["EmailLogs:MailingAddress"], "LAM Conference"),
                 to: new MailAddress(model.Email, model.Name)
-                );
+            );
+            
+            message.IsBodyHtml = true;
+            var filePath = _hostEnv.WebRootPath + Path.DirectorySeparatorChar.ToString() + "MailTemplates" 
+                            + Path.DirectorySeparatorChar.ToString() + "RegistrationSuccessful.html";
 
+            StreamReader reader = new(filePath);
+            var mailBody = await reader.ReadToEndAsync();
+            reader.Close();
+
+            
             message.Subject = "Hello from Lam Conference";
-            message.Body = @"Registration was successful
-            Thanks for your interest in the conference.
-
-            Regards,
-            Anetor.
-            ";
+            message.Body = mailBody;
             
 
             client.Send(message);

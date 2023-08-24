@@ -1,6 +1,9 @@
+using System.Net;
+using System.Net.Mail;
 using LamConference.Services;
 using LamConference.ViewModel;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 
 namespace LamConference.Controllers{
     public class RegistrationController : Controller{
@@ -28,6 +31,7 @@ namespace LamConference.Controllers{
                 {
                     return RedirectToAction("Registration", new{id = viewModel.RefID});
                 }
+                this.ModelState.AddModelError("RefID", "Invalid Reference ID");
             }
             return View(viewModel);
         }
@@ -36,31 +40,36 @@ namespace LamConference.Controllers{
         //Registration:: Collect user data.
         public async Task<ActionResult> Registration(Guid id)
         {
-            IDViewModel model = new(){RefID = id};
-            bool instance = await _service.IdCheck(model);
-
-            if(id == Guid.Empty && !instance)
+            if(id != Guid.Empty)
             {
-                return RedirectToAction(nameof(Register));
+                IDViewModel model = new(){RefID = id};
+                bool instance = await _service.IdCheck(model);
+
+                if(instance)
+                {                    
+                    RegistrationViewModel viewModel = new(){
+                        RefID = id
+                    };
+                    return View(viewModel);
+                } 
+                return RedirectToAction(nameof(Register));               
             }
 
-            RegistrationViewModel viewModel = new(){
-                RefID = id
-            };
-
-            return View(viewModel);
+            return RedirectToAction(nameof(Register));
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Registration(RegistrationViewModel viewModel)
         {
+            if(ModelState.IsValid)
+            {
                 var instance = await _service.Registration(viewModel);
                 if(instance)
                 {
                     return RedirectToAction(nameof(Success));
                 }
-            // }
+            }
             return View(viewModel);
         }
 
