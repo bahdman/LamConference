@@ -1,21 +1,58 @@
-using System.Linq;
 using LamConference.Services;
 using LamConference.Models;
 using Microsoft.EntityFrameworkCore;
 using LamConference.ViewModel;
 using LamConference.Handlers;
+using Microsoft.AspNetCore.Identity;
+
 
 namespace LamConference.Repository{
     public class UserRepository : UserHandler, IUser{
         private readonly Data.AppContext _context;
-        public UserRepository(Data.AppContext context) : base(context)
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
+        public UserRepository(Data.AppContext context,
+            UserManager<IdentityUser> userManager,
+            IHttpContextAccessor httpContextAccessor
+        ) : base(context, userManager, httpContextAccessor)
         {
             _context = context;
+            _userManager = userManager;
+            _httpContextAccessor = httpContextAccessor;
         }
 
-        public async Task<List<ReferenceID>> GetAllReferenceID()//
+        public async Task<List<RefIDViewModel>> GetAllReferenceID()//
         {
-            return await _context.ReferenceIDs.ToListAsync();
+            string returnController = await ReturnController();
+            // int 
+            var iDs =  await _context.ReferenceIDs.ToListAsync();
+            List<RefIDViewModel> listInstance = new(){};
+            if(iDs.Count < 1)
+            {
+                RefIDViewModel instance = new()
+                {   
+                    ReturnController = returnController,
+                };
+
+                listInstance.Add(instance);
+
+                return listInstance;
+            }
+            
+            foreach(var item in iDs)
+            {
+                RefIDViewModel instance = new()
+                {
+                    ID = item.Id,
+                    ReturnController = returnController,
+                    AvailableIDs = iDs.Count
+                };
+
+                listInstance.Add(instance);
+            }
+
+            return listInstance;
         }
 
         public async Task<bool> FindRegisteredStudent(Guid id)//
@@ -64,12 +101,24 @@ namespace LamConference.Repository{
         {
             var displayProperties = await DisplayProperties();
             List<FinanceDashboardViewModel> model = new(){};
+            if(displayProperties.Count < 1)
+            {
+                FinanceDashboardViewModel instance = new()
+                {
+                    AvailableRefID = 0,
+                    TotalGeneratedID = 0,
+                    TotalRegisteredStudents = 0
+                };
+
+                model.Add(instance);
+                return model;
+            }
             foreach(var item in displayProperties)
             {
                 FinanceDashboardViewModel instance = new(){
                     FirstName = item.FirstName,
                     LastName = item.LastName,
-                    Telephone = item.Telephone,
+                    Email = item.Email,
                     Department = item.Department,
                     Level = item.Level,
                     RefID = item.RefID,
@@ -89,12 +138,24 @@ namespace LamConference.Repository{
             var displayProperties = await DisplayProperties();
             var estimatedAmount = "FROM DB"; //Big TODO:: would come straight from the DB.
             List<ITDashboardViewModel> model = new(){};
+            if(displayProperties.Count < 1)
+            {
+                ITDashboardViewModel instance = new(){
+                    AvailableRefID = 0,
+                    TotalGeneratedID = 0,
+                    TotalRegisteredStudents = 0,
+                    EstimatedAmount = 0
+                };
+
+                model.Add(instance);
+                return model;
+            }
             foreach(var item in displayProperties)
             {
                 ITDashboardViewModel instance = new(){
                     FirstName = item.FirstName,
                     LastName = item.LastName,
-                    Telephone = item.Telephone,
+                    Email = item.Email,
                     Department = item.Department,
                     Level = item.Level,
                     RefID = item.RefID,

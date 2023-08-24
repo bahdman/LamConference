@@ -1,13 +1,22 @@
 using LamConference.Models;
 using LamConference.HandlerModels;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
 
 namespace LamConference.Handlers{
     public class UserHandler{
         private readonly Data.AppContext _context;
-        public UserHandler(Data.AppContext context)
-        {
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
+        public UserHandler(Data.AppContext context,
+            UserManager<IdentityUser> userManager,
+            IHttpContextAccessor httpContextAccessor
+        ){
             _context = context;
+            _userManager = userManager;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public async Task<StudentData> FindStudent(Guid id)
@@ -46,12 +55,24 @@ namespace LamConference.Handlers{
             var totalGeneratedRefId =  TotalGeneratedID();
             var totalRegisteredStudents = GetTotalStudents();
             List<DashboardHandlerModel> model = new(){};
+            if(studentDatas.Count < 1 && avaliableRefID > 1)
+            {
+                DashboardHandlerModel instance = new(){
+                    
+                    AvailableRefID = avaliableRefID,
+                    TotalGeneratedID = totalGeneratedRefId,
+                    TotalRegisteredStudents = totalRegisteredStudents
+                };
+
+                model.Add(instance);
+                return model;
+            }
             foreach(var item in studentDatas)
             {
                 DashboardHandlerModel instance = new(){
                     FirstName = item.FirstName,
                     LastName = item.LastName,
-                    Telephone = item.Telephone,
+                    Email = item.Email,
                     Department = item.Department,
                     Level = item.Level,
                     RefID = item.RefId,
@@ -63,6 +84,17 @@ namespace LamConference.Handlers{
                 model.Add(instance);
             }
             return model;
+        }
+
+        public async Task<string> ReturnController()
+        {
+            var user = await _userManager.FindByIdAsync(_httpContextAccessor.HttpContext.User
+            .FindFirstValue(ClaimTypes.NameIdentifier));
+
+            var userRole = await _userManager.GetRolesAsync(user);
+            //Remove unecessary usings
+
+            return userRole[0];
         }
     }
 }

@@ -23,18 +23,24 @@ namespace LamConference.Controllers{
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteReferenceID(Guid id)
         {
-            IDViewModel model = new(){RefID = id};
-            bool foundInstance = await _service.FindRegisteredStudent(id);
-
-            if(id != Guid.Empty && foundInstance)
+            if(id != Guid.Empty)
             {
-                await _service.DeleteReferenceID(model);
+                IDViewModel model = new(){RefID = id};
+                bool foundInstance = await _service.FindRegisteredStudent(id);
+
+                if(foundInstance)
+                {
+                    await _service.DeleteReferenceID(model);
+                    return RedirectToAction(nameof(Dashboard));
+                }
+                
                 return RedirectToAction(nameof(Dashboard));
             }
 
             return RedirectToAction(nameof(Dashboard));
         }
 
+        //Big TODO:: Not Implemented
         public async Task<IActionResult> Pricing(PriceViewModel viewModel)
         {
             if(ModelState.IsValid)

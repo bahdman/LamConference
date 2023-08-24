@@ -47,7 +47,8 @@ namespace LamConference.Repository{
         [ValidateAntiForgeryToken]
         public async Task<bool> Login(LoginViewModel viewModel)
         {
-            var instance = await _signInManager.PasswordSignInAsync(viewModel.Username, viewModel.Password, viewModel.RememberMe, false);
+            var instance = await _signInManager.PasswordSignInAsync(viewModel.Username, 
+            viewModel.Password, viewModel.RememberMe, false);
             if(instance.Succeeded)
             {
                 return true;

@@ -1,6 +1,7 @@
 using LamConference.Services;
 using LamConference.ViewModel;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LamConference.Controllers{
@@ -9,11 +10,13 @@ namespace LamConference.Controllers{
 
         private readonly IIdGenerator _idService;
         private readonly IUser _userService;
+        private readonly UserManager<IdentityUser> _user;
 
-        public RefIDController(IIdGenerator idService, IUser userService)
+        public RefIDController(IIdGenerator idService, IUser userService, UserManager<IdentityUser> user)
         {
             _idService = idService;
             _userService = userService;
+            _user = user;
         }
 
         public ActionResult GenerateID()
@@ -23,14 +26,14 @@ namespace LamConference.Controllers{
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> RefID(GenerateIDViewModel viewModel)
+        public async Task<ActionResult> GenerateID(GenerateIDViewModel viewModel)
         {
             if(ModelState.IsValid)
             {
                 var instance = await _idService.IDGenerator(viewModel);
                 if(instance)
                 {
-                    return RedirectToAction(nameof(ViewGeneratedIDs));//FiananceDashboard
+                    return RedirectToAction(nameof(ViewGeneratedIDs));
                 }
             }
 
