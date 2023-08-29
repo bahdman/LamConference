@@ -43,7 +43,7 @@ namespace LamConference.Models{
         Economics,
         [Display(Name ="Finance")]
         Finance,
-        [Display(Name = "Informaton Technology")]
+        [Display(Name = "Information Technology")]
         InformationTechnology,
         [Display(Name = "International Relations")]
         InternationalRelations,
