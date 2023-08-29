@@ -54,8 +54,24 @@ namespace LamConference.Controllers{
             return View(viewModel);
         }
 
-        public ActionResult Login()
+        private async Task<string> GetSignedInUserRole()
+        { 
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+            var userRole = await _userManager.GetRolesAsync(user);
+
+            return userRole[0];                  
+        }
+
+        public async Task<ActionResult> Login()
         {
+            var status = _SignInManager.IsSignedIn(User);
+            if(status)
+            {
+                var userRole = await GetSignedInUserRole();
+                
+                return RedirectToAction("Dashboard", userRole);
+            }
+
             return View();
         }
 
