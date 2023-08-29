@@ -11,12 +11,13 @@
         <link rel="stylesheet" href="~/css/style.css" asp-append-version="true">
     </head>
     <body>
+        <div class="bg" id="bg"></div>
         <header class="dashboardHeader">
             <nav>
                 <div class="header flex">
                     <div class="logo"><h1><span class="caps">lam </span>Conference</h1></div>
     
-                    <ul class="flex">
+                    <ul id="ul" class="flex">
                         <li><a asp-controller="RefID" asp-action="GenerateID">Generate RefID</a></li>
                         <li><a asp-controller="RefID" asp-action="ViewGeneratedIDs">View RefIDs</a></li>
                         <li class="aside">
@@ -25,6 +26,11 @@
                             </form>
                         </li>
                     </ul>
+
+                    <div id="hamburger">
+                        <div id="fcross" class="cross fcross"></div>
+                        <div id="scross" class="cross scross"></div>
+                    </div>
                 </div>
             </nav>
         </header>
@@ -34,41 +40,39 @@
         
             <div class="displayContainer">
                 <div class="statistics">
-    
-                    <h2>Idan, <span class="text">welcome</span></h2>
-
-                    <div class="compiledStats flex">
-                        <div class="rectangularCard">
-                            <h4>@Html.DisplayNameFor(model => model[0].TotalRegisteredStudents)</h4>
-                            <h3>@Html.DisplayFor(model => model.FirstOrDefault().TotalRegisteredStudents)</h3>
-                        </div>
-                        <div class="rectangularCard">
-                            <h4>@Html.DisplayNameFor(model => model[0].EstimatedAmount)</h4>
-                            <h3>@Html.DisplayFor(model => Model.FirstOrDefault().EstimatedAmount)</h3>
-                        </div>
-                    </div>
-    
                     <div class="statisticsCards flex">
-                        <div class="card flex greenCard">
-                            <div class="cardContent flex">
-                                <h3>@Html.DisplayNameFor(model => model[0].AvailableRefID)</h3>
+                        <h2>Idan, <span class="text">welcome</span></h2>
+
+                        <div class="compiledStats flex">
+                            <div class="rectangularCard">
+                                <h4>@Html.DisplayNameFor(model => model[0].TotalRegisteredStudents)</h4>
+                                <h3>@Html.DisplayFor(model => model.FirstOrDefault().TotalRegisteredStudents)</h3>
+                            </div>
+                            <div class="rectangularCard">
+                                <h4>@Html.DisplayNameFor(model => model[0].EstimatedAmount)</h4>
+                                <h3>@Html.DisplayFor(model => Model.FirstOrDefault().EstimatedAmount)</h3>
+                            </div>
+                        </div>
+                        <div class="flex statisticsCardsContent">                        
+                            <div class="card flex greenCard">
+                                <div class="cardContent flex">
+                                    <h3>@Html.DisplayNameFor(model => model[0].AvailableRefID)</h3>
                                 <h2>@Html.DisplayFor(model => Model.FirstOrDefault().AvailableRefID)</h2>
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="card flex redCard">
-                            <div class="cardContent flex">
-                                <h3>@Html.DisplayNameFor(model => model[0].TotalGeneratedID)</h3>
-                                <h2>@Html.DisplayFor(model => Model.FirstOrDefault().TotalGeneratedID)</h2>
+                            <div class="card flex redCard">
+                                <div class="cardContent flex">
+                                    <h3>@Html.DisplayNameFor(model => model[0].TotalGeneratedID)</h3>
+                                    <h2>@Html.DisplayFor(model => Model.FirstOrDefault().TotalGeneratedID)</h2>
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="card flex blueCard">
-                            <div class="cardContent flex">
-                                <h3>@Html.DisplayNameFor(model => model[0].TotalRegisteredStudents)</h3>
-                                <h2>@Html.DisplayFor(model => Model.FirstOrDefault().TotalRegisteredStudents)</h2>
+                            <div class="card flex blueCard">
+                                <div class="cardContent flex">
+                                    <h3>@Html.DisplayNameFor(model => model[0].TotalRegisteredStudents)</h3>
+                                    <h2>@Html.DisplayFor(model => Model.FirstOrDefault().TotalRegisteredStudents)</h2>
+                                </div>
                             </div>
-                        </div>
+                        </div>     
                     </div>
                 </div>
     
@@ -102,18 +106,18 @@
                                     }
                                 </tbody>
                             </table>
-                        </div>
-                    </div>
 
-                    <div id="formContainer" class="delForm show">
-                        <form id="form" method="post">
-                            <h4>Are you sure you would like to delete this this user details?</h4>
-                            <div class="btns flex">
-                                <div id="cancelBtn" class=" btn cancelBtn">Cancel</div>
-                                <button class="btn redBtn"> Delete</button>
+                            <div id="formContainer" class="delForm show">
+                                <form id="form" method="post">
+                                    <h4>Are you sure you would like to delete this this user details?</h4>
+                                    <div class="btns flex">
+                                        <div id="cancelBtn" class=" btn cancelBtn">Cancel</div>
+                                        <button class="btn redBtn"> Delete</button>
+                                    </div>
+                                </form>
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                    </div>  
                 </div>
             </div>
             <script src="~/js/main.js"></script>

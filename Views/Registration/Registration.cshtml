@@ -16,19 +16,22 @@
             <div class="header flex">
                 <div class="logo"><h1><span class="caps">lam </span>Conference</h1></div>
 
-                <ul class="flex">
+                <ul id="ul" class="flex">
                     <li><a asp-action="">About</a></li>
                     <li><a asp-action="">Our Sponsors</a></li>
                     <li><a asp-action="">What To Expect</a></li>
-                    <li class="aside"><a asp-controller="Registration" asp-action="Register"><button class="btn redBtn">Register</button></a></li>
                 </ul>
 
+                <div id="hamburger">
+                    <div id="fcross" class="cross fcross"></div>
+                    <div id="scross" class="cross scross"></div>
+                </div>
             </div>
         </nav>
     </header>
+    <div class="bg" id="bg"></div>
 
-    <body>
-        <div class="mainContainer">
+        <div id="special" class="mainContainer">
             <div class="flex containerContent">
                 <div class="formSection">
                     <div class="textContainer">
@@ -43,22 +46,22 @@
                             <form asp-action="Registration">
 
                                 <div class="nameFields flex fields">
-                                    <div class="column">
+                                    <div class="column flex">
                                         <input asp-for="FirstName" placeholder="First Name">
                                         <span asp-validation-for="FirstName" class="error"></span>
                                     </div>
-                                    <div class="column">
+                                    <div class="column flex">
                                         <input asp-for="LastName" placeholder="Last Name">
                                         <span asp-validation-for="LastName" class="error"></span>
                                     </div>
                                 </div>
 
                                 <div class="contactFields flex fields">
-                                    <div class="column">
+                                    <div class="column flex">
                                         <input asp-for="Telephone" placeholder="Phonenumber">
                                         <span asp-validation-for="Telephone" class="error"></span>
                                     </div>
-                                    <div class="column">
+                                    <div class="column flex">
                                         <input asp-for="Email" placeholder="Email">
                                         <span asp-validation-for="Email" class="error"></span>
                                     </div>
@@ -67,14 +70,14 @@
                                 </div>
 
                                 <div class="acadDetailsFields flex fields">
-                                    <div class="column">
+                                    <div class="column flex">
                                         <select asp-for="Level" asp-items="Html.GetEnumSelectList<Level>()">
                                             <option value="">Level</option>
                                         </select>
                                         <span asp-validation-for="Level" class="error"></span>
                                     </div>
                                     
-                                    <div class="column">
+                                    <div class="column flex">
                                         <select asp-for="Department" asp-items="Html.GetEnumSelectList<Department>()">
                                             <option value="">Department</option>
                                         </select>
@@ -92,28 +95,14 @@
                     </div>
                 </div>
 
-                <div class="illustrationSection">
-                    <div class="illustration"><img src="~/Images/3d-business-man-and-woman-working-with-laptop.png" alt="Illustration"></div>
+                <div class="illustrationSection registerPg">
+                    <a href="https://www.freepik.com/free-photo/fun-3d-cartoon-teenage-boy_14200926.htm#query=3d%20character&position=47&from_view=keyword&track=ais">
+                        <div class="illustration"><img src="~/images/fun-3d-cartoon-teenage-boy.png" alt="Illustration from FreePik"></div>
+                    </a>
+                    
                 </div>
             </div>
         </div>
-    </body>
+    <script src="~/js/main.js"></script>
 </body>
 </html>
-
-
-<!-- 
-@* <form asp-action="Registration" method="post">
-    <input asp-for="FirstName" placeholder="First Name">
-    <input asp-for="LastName" placeholder="Last Name">
-    <input asp-for="Telephone" placeholder="Phone Name">
-    <input asp-for="Email" placeholder="First Name">
-    <select asp-for="Level" asp-items="Html.GetEnumSelectList<Level>()">
-        <option value="">Level</option>
-    </select>
-    <select asp-for="Department" asp-items="Html.GetEnumSelectList<Department>()">
-        <option value="">Department</option>
-    </select>
-    <input asp-for="RefID">
-    <button>Submit</button>
-</form> *@ -->

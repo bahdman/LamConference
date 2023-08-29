@@ -1,3 +1,91 @@
+//General Variables
+var bg = document.getElementById('bg');
+var hamburger = document.getElementById('hamburger');
+var ul = document.getElementById('ul');
+var fcross = document.getElementById('fcross');
+var scross = document.getElementById('scross');
+var i = 0;
+//Ends here
+
+//Register Page Variable
+var zIndex = document.getElementById('zIndex');
+
+//Ends here
+
+// Registration Page Variable
+var special = document.getElementById('special');
+// Ends here
+
+
+function RemoveAccess() {
+    zIndex.style.zIndex = "-5";
+}
+function AllowAccess() {
+    zIndex.style.zIndex = "1";
+}
+
+// Registratiopn Page Function To Add Blur Effect to mainContainer//
+
+function AddBlur()
+{
+    special.classList.add("special")
+}
+function RemoveBlur()
+{
+    special.classList.remove("special")
+}
+
+// Ends Here
+
+hamburger.addEventListener('click', ()=>{
+    i++
+    if (i % 2 == 1) {
+        // General Functionality
+        ul.style.visibility = "visible";
+        fcross.classList.add("fshow", "red")
+        scross.classList.add("sshow", "red")
+        bg.classList.add("bgshow")
+        document.body.style.overflow = "hidden";
+        // Ends here
+        
+        if(special != null && zIndex != null)
+        {
+            AddBlur()
+            RemoveAccess()
+        }    
+        if (special != null) {
+            AddBlur()
+        } 
+        if(zIndex != null)
+        {
+            RemoveAccess()
+        }
+               
+    }
+    else{
+        ul.style.visibility = "hidden";
+        fcross.classList.remove("fshow", "red")
+        scross.classList.remove("sshow", "red") 
+        bg.classList.remove("bgshow")
+        document.body.style.overflow = "visible"
+        if(special != null && zIndex != null)
+        {
+            RemoveBlur()
+            AllowAccess()
+        }    
+        if (special != null) {
+            RemoveBlur()
+        } 
+        if(zIndex != null)
+        {
+            AllowAccess()
+        }
+    }  
+})
+
+
+
+
 var form = document.getElementById('form');
 var formContainer = document.getElementById('formContainer');
 var items = document.querySelectorAll(".del");

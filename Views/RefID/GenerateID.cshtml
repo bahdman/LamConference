@@ -1,9 +1,86 @@
 @model LamConference.ViewModel.GenerateIDViewModel
 
-<form asp-action="GenerateID" method="post">
-    <div class="column">
-        <input asp-for="Value">
-        <span asp-validation-for="Value" class="error"></span>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - LamConference</title>
+    <link rel="stylesheet" href="~/css/style.css">
+    <!-- @* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/LamConference.styles.css" asp-append-version="true" /> *@ -->
+
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="header flex">
+                <div class="logo"><h1><span class="caps">lam </span>Conference</h1></div>
+
+                <ul id="ul" class="flex">
+                    <li><a asp-action="">About</a></li>
+                    <li><a asp-action="">Our Sponsors</a></li>
+                    <li><a asp-action="">What To Expect</a></li>
+                    <li class="aside"><a asp-action=""><button class="btn redBtn">Register</button></a></li>
+                </ul>
+
+                <div id="hamburger">
+                    <div id="fcross" class="cross fcross"></div>
+                    <div id="scross" class="cross scross"></div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div id="bg" class="bg"></div>
+
+
+    <div id="zIndex" class="flex generate mainContainer">
+    
+        <div class="center flex">
+            <div class="regContainer flex">
+                <div class="containerText">
+                    <h3>Genarate reference ID</h2>
+                    <h5><span class="blueTxt">Do note</span> input should be > 1 and < 100</h5>
+                </div>
+
+                <div class="containerInput">
+                    <form class="flex" asp-action="GenerateID" method="post">
+                        <div class="column">
+                            <input asp-for="Value" placeholder="Value">
+                            <span asp-validation-for="Value" class="error"></span>
+                        </div>
+                        <button class="btn blackBtn">Generate</button>
+                    </form>
+                    @* <form class="flex" asp-action="Register">
+                        <input asp-for="RefID" placeholder="Reference ID">
+                        <button class="btn blackBtn">Register</button> 
+                    </form> *@
+                </div>
+            </div>
+        </div>
+
+        <div class="illustrationSection">
+            <a href="https://icons8.com/illustrations">
+                <div class="illustration"><img src="~/images/3d-business-man-and-woman-working-with-laptop.png" alt="Illustration from Icon8"></div>
+            </a>
+        </div>
     </div>
-    <button>Generate</button>
-</form>
+    <script src="~/js/main.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

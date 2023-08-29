@@ -11,59 +11,55 @@
     <link rel="stylesheet" href="~/css/style.css">
 </head>
 <body>
-    <!-- <div class="bgCover"></div> -->
     <header>
-        <div class="header flex">
-            <div class="logo">LGFIX</div>
+        <nav>
+            <div class="header flex">
+                <div class="logo"><h1><span class="caps">lam </span>Conference</h1></div>
+
+                <ul id="ul" class="flex">
+                    <li><a asp-action="">About</a></li>
+                    <li><a asp-action="">Our Sponsors</a></li>
+                    <li><a asp-action="">What To Expect</a></li>
+                    <li class="aside"><a asp-action=""><button class="btn redBtn">Register</button></a></li>
+                </ul>
+
+                <div id="hamburger">
+                    <div id="fcross" class="cross fcross"></div>
+                    <div id="scross" class="cross scross"></div>
+                </div>
+            </div>
+        </nav>
     </header>
-    <div class="coverRx"></div>
+    <div id="bg" class="bg"></div>
 
-    <div class="loginContainer flex">
-        <div class="LgContainer flex shadow">
+    <div class="mainContainer lg">
+        <div class="lgContainer flex">
 
-            <div class="LgImg"><img src="~/images/12145005_Wavy_Cst-02_Single-06 1.png" alt=""></div>
+            <div class="lgIllustration">
+                <img src="~/images/view-3d-confident-businessman.png" alt="" srcset="">
+            </div>
 
-            <div class="LgContent">
-                <form asp-controller="Account" asp-action="Login">
-                    <h2>Sign In</h2>
+            <div class="lgContent">
+                <form class="flex" asp-action="Login">
+                    <h2 class="caps">Sign In</h2>
+                    <div class="column flex">
+                        <input asp-for="Username" placeholder="Username">
+                        <span asp-validation-for="Username" class="error"></span>
+                    </div>
 
-                    <div class="inputField flex">
-                        <div class="emailField">
-                            <div class="column">
-                                <input asp-for="Username" placeholder="Username">
-                                <span asp-validation-for="Username" class="error"></span>
-                            </div>
-                            
-                            <div class="icon emailIcon">
-                                <img src="~/images/user.svg" alt="Email Logo">
-                            </div>
-                        </div>
-
-                        <div class="passwordField">
-                            <div class="column">
-                                <input asp-for="Password" placeholder="Password">
-                                <span asp-validation-for="Password" class="error"></span>
-                            </div>
-                            
-                            <div class="icon passwordIcon">
-                                <img src="~/images/key.svg" alt="Password Logo">
-                            </div>
-                        </div>
+                    <div class="column flex">
+                        <input asp-for="Password" placeholder="Password">
+                        <span asp-validation-for="Password" class="error"></span>
+                    </div>
                     
-                        <label asp-for="RememberMe"></label>
-                        <input class="normal" asp-for="RememberMe">
-                    </div>
-
-                    <span asp-validation-for="Username" class="error"></span>
-
-                    <div class="btnContent flex">
-                        <button class="blackBg btn">Submit</button>
-                        <!-- <h6>Forgot Password? <span>Recover</span></h6>-->
-                        <h6>Don't have an account? <span>Sign Up</span></h6>                        
-                    </div>
+                    <button class="btn blackBtn">Submit</button>
                 </form>
             </div>
+
         </div>
     </div>
+    <script src="~/js/main.js"></script>
 </body>
 </html>
+
+

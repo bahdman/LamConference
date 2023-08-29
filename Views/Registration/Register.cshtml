@@ -14,22 +14,27 @@
             <div class="header flex">
                 <div class="logo"><h1><span class="caps">lam </span>Conference</h1></div>
 
-                <ul class="flex">
+                <ul id="ul" class="flex">
                     <li><a asp-action="">About</a></li>
                     <li><a asp-action="">Our Sponsors</a></li>
                     <li><a asp-action="">What To Expect</a></li>
-                    <li class="aside"><a asp-controller="Account" asp-action="LogOut"><button class="btn redBtn">Register</button></a></li>
+                    <li class="aside"><a asp-action=""><button class="btn redBtn">Register</button></a></li>
                 </ul>
 
+                <div id="hamburger">
+                    <div id="fcross" class="cross fcross"></div>
+                    <div id="scross" class="cross scross"></div>
+                </div>
             </div>
         </nav>
     </header>
+    <div id="bg" class="bg"></div>
 
-    <body>
+    <div id="zIndex" class="flex generate mainContainer">
         <div class="center flex">
             <div class="regContainer flex">
                 <div class="containerText">
-                    <h3>Kindly input reference your reference ID</h2>
+                    <h3>Kindly input your reference ID</h2>
                     <h5>Do note that Ref ID can only be used once</h5>
                 </div>
 
@@ -42,10 +47,14 @@
                 </div>
             </div>
         </div>
-    </body>
+
+        <div class="illustrationSection">
+            <a href="https://icons8.com/illustrations">
+                <div class="illustration"><img src="~/images/3d-business-man-and-woman-working-with-laptop.png" alt="Illustration From Icon8"></div>
+            </a>
+            
+        </div>
+    </div>
+    <script src="~/js/main.js"></script>
 </body>
 </html>
-<!-- @* <form asp-action="Register" method="post">
-    <input asp-for="RefID">
-    <button>Submit</button>
-</form> *@ -->
