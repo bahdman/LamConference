@@ -42,6 +42,6 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     //Big TODO:: change back to home index when home page is ready
-    pattern: "{controller=Registration}/{action=Register}/{id?}");
+    pattern: "{controller=Event}/{action=Home}/{id?}");
 
 app.Run();
