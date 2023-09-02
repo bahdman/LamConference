@@ -7,18 +7,18 @@ namespace LamConference.ViewModel{
     public class RegistrationViewModel{
         [DisplayName("First Name")]
         [Required(ErrorMessage = "Cannot be blank")]
-        [RegularExpression(@"^[ ]?[a-zA-Z]+[ ]*$", ErrorMessage ="Name is not valid")]
+        [RegularExpression(@"^[a-zA-Z- ]*$", ErrorMessage ="Cannot contain special character(s)")]
         public string? FirstName{get; set;}
         [DisplayName("Last Name")]
         [Required(ErrorMessage = "Cannot be blank")]
-        [RegularExpression(@"^[ ]?[a-zA-Z]+[ ]*$", ErrorMessage ="Name is not valid")]
+        [RegularExpression(@"^[a-zA-Z- ]*$", ErrorMessage ="Cannot contain special character(s)")]
         public string? LastName{get; set;}
         [DisplayName("Phone Number")]
         [Required(ErrorMessage = "Cannot be blank")]
         [RegularExpression(@"^[+]?[0789]?[0-9]{10}$", ErrorMessage = "Not a valid phonenumber")]
         public string? Telephone{get; set;}
         [Required(ErrorMessage = "Cannot be blank")]
-        [RegularExpression(@"^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-‌​]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$", ErrorMessage = "Email is not valid")]
+        // [RegularExpression(@"^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-‌​]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$", ErrorMessage = "Email is not valid")]
         public string? Email{get; set;}
         [EnumDataType(typeof(Level), ErrorMessage = "Select a valid field")]
         public Level Level{get; set;}
