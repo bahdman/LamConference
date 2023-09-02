@@ -6,6 +6,7 @@
     --clrWht : #FFFFFF;
     --clrBlue: #1400FF;
     --clrLemon : #00E009;
+    --clrGrey : #7E7D7D;
     --tblClr : #F6FEFF;
     --tblBodyRow : #DEF1F0;
     --tblHeadRow : #0048ff6e;
@@ -87,8 +88,14 @@ button:hover, .btn:hover{
 .blackBtn{
     background: var(--clrBlk);
 }
+.blackBtn:active{
+    background: var(--clrGrey) !important;
+}
 .redBtn{
     background: var(--clrRed);
+}
+.redBtn:active{
+    background: var(--clrBlk) !important;
 }
 /* header */
 

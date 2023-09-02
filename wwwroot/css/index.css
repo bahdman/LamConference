@@ -1,0 +1,878 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Sniglet&display=swap');
+
+:root{
+    --clrBlue : #1400FF;
+    --clrWht : #FFFFFF;
+    --clrBlk : #000000;
+    --clrGrey : #EAEAEA;
+    --offWht : #F2F2F2;
+    --clrDrkGrey : #C2C2C2;
+}
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+.flex{
+    display: flex;
+}
+.show{
+    display: flex !important;
+}
+
+.clrBlue, 
+.bdyContent h2,
+.bdyContent h3,
+.bdyContent h4{
+    color: var(--clrBlue);
+}
+span{
+    font-weight: bold;
+}
+
+.mgTop{
+    margin-top: 30px;
+}
+
+ul{
+    align-items: center;
+    list-style: none;
+}
+
+li{
+    /* list-style: none; */
+    margin: 0px 5px;
+    padding: 0px 5px;
+}
+
+.aside{
+    margin-left: 20px;
+}
+
+a{
+    text-decoration: none;
+    color: var(--clrBlk);
+    font-size: 14px;
+}
+
+.btn{
+    background: var(--clrBlue);
+    color: var(--clrWht);
+    border: none;
+    border-radius: 20px;
+    width: 130px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.btn:active{
+    background: var(--clrBlk) !important;
+}
+
+.btn:hover{
+    transform: scale(1.05);
+}
+
+button:focus, .burger:focus{
+    outline: none !important;
+}
+
+.bgCover{
+    background: rgba(0, 0, 0, 0.171);
+    width : 100vw;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: none;
+}
+
+img{
+    width: 100%;
+    height: 100%;
+}
+.absolute{
+    position: absolute;
+}
+.caps{
+    text-transform: uppercase;
+}
+
+/* Header */
+.header{
+    position: fixed;
+    top: 0;
+    margin: 0 auto;
+    width: 100%;
+    background: var(--clrWht);
+    /* max-width: 1100px; */
+    padding: 20px 40px;
+    justify-content: space-between;
+    align-items: center;
+    transition: .4s;
+    z-index: 2;
+}
+
+.headerActive{
+    background: rgba(0, 0, 0, 0.548);
+    color: white;
+}
+
+.headerActive nav ul li a{
+    color: white;
+}
+
+.headerActive .fcross,
+.headerActive .scross{
+    background: var(--clrWht);
+}
+
+.fcross,
+.scross{
+    width: 30px;
+    height: 2px;
+    background: var(--clrBlk);
+}
+
+.rfcross{
+    transform: rotate(45deg);
+    background: red;
+}
+.rscross{
+    margin-top: -8.5px;
+    transform: rotate(-225deg);
+    background: red;
+}
+
+.burger{
+    flex-direction: column;
+    gap: 8px;
+    display: none;
+    position: relative;
+    z-index: 4;
+    cursor: pointer;
+}
+
+.logo h1{
+    font-family: 'Sniglet', cursive;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+/* Body */
+
+.specialMargin{
+    margin-top: 230px !important; 
+}
+
+.bdyContainer{
+    width: 80%;
+    margin: 0 auto; 
+    margin-top: 250px;  
+}
+
+.bdyContent h2{
+    font-size: 19px;
+    margin: 0px 0px 25px 40px;
+}
+
+h3{
+    font-size: 17px;
+}
+h4{
+    font-size: 15px;
+}
+
+.shadow{
+    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.171);
+    background: var(--clrWht);
+}
+
+.regContent{
+    position: relative;
+    padding: 40px;
+    margin-bottom: 100px;
+}
+p, .aims li{
+    font-size: 13.5px;
+    line-height: 2;
+}
+
+.illustration{
+    width: 250px;
+    height: 250px;
+    top: -180px;
+    right: 0;
+    z-index: -1 ;
+}
+
+.regContent h3,
+.regContent h4
+{
+    margin-bottom : 10px;
+}
+
+.regContent p{
+    margin-bottom: 20px;
+}
+
+/* Home Page */
+
+.showcase{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 150px;
+}
+
+.showcaseTxt{
+    align-self: center;
+}
+
+.showcaseTxt p {
+    margin-top: 10px;
+}
+
+.showcaseImg{
+    width: 500.27px;
+    height: 311px;
+}
+.showcaseBtn{
+    margin-top: 20px;
+}
+
+.showcaseBtn{
+    align-items: center;
+    gap: 20px;
+}
+
+.sponsorsContainer{
+    background: var(--clrGrey);
+    height: 250px;
+}
+
+.sponsorsContainer> .flex{
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+    flex-direction: column;
+    gap: 90px;
+    /* background: black; */
+    align-items: center;
+    justify-content: center;
+}
+
+.sponsors{
+    width: 100%;
+    justify-content: space-between;  
+}
+
+.nutzyLogo{
+    width: 150px;
+    height: 50px;
+}
+.cowrywiseLogo{
+    width: 180px;
+    height: 30px;
+}
+.wiiCreateLogo{
+    width: 180px;
+    height: 40px;
+}
+
+.speakersContainer{
+    background: var(--clrBlue);
+    height: 500px;
+}
+
+.speakersContainer> .flex{
+    flex-direction: column;
+    width: 80%;
+    height: 100%;
+    gap: 50px;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.speakersContainer h2{
+    color: var(--clrWht);
+}
+
+.speakers{
+    gap: 100px;
+}
+
+.centerTxt{
+    text-align: center;
+}
+
+.card{
+    width: 250px;
+    height: 350px;
+    padding: 40px;
+    background: var(--clrWht);
+    border: none;
+    border-radius: 9px;
+    box-shadow: 0px 0px 20px 3px rgba(0, 0, 0, 0.281);
+    cursor: pointer;
+    transition: .3s;
+}
+.card:hover{
+    transform: translateY(-10px);
+}
+
+.frame{
+    width: 130px;
+    height: 130px;
+    margin: 0 auto;
+    margin-bottom: 35px;
+}
+
+.speakerInfo h4{
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.infoContainer{
+    width: 100%;
+    height: 500px;
+}
+
+.infoContent{
+    width: 70%;
+    height: 100%;
+    margin: 0 auto;
+    align-items: center;
+    gap: 30px;
+}
+
+.infoImg{
+    width: 130px;
+    height: 250px;
+}
+.infoTxt h4{
+    margin-bottom: 10px;
+}
+
+.infoTxt .btn{
+    margin: 10px 0px 50px 0px;
+}
+
+/* Footer */
+
+.footer{
+    padding: 50px 0px;
+    background: var(--clrBlk);
+}
+
+.footerContent{
+    width: 55%;
+    margin: 0 auto;
+}
+
+.footerContent h5,
+.footerContent li,
+.footerContent h6
+{
+    color: var(--clrDrkGrey);
+    font-size: 14px;
+}
+.footerContent li a{
+    font-size: 13px;
+}
+
+.footerContent h6{
+    margin-top: 50px;
+    text-align: center;
+}
+
+.contact ul{
+    line-height: 2.5;
+}
+
+.contact li{
+    font-size: 13px;
+}
+
+.contact{
+    margin: 20px 0px;
+    justify-content: space-between;
+}
+
+
+/* Speaker Page */
+
+.speakerContent h2{
+    font-weight: 500;
+}
+
+.speakerCard, .dummy{
+    /* justify-content: space-between; */
+    gap : 100px;
+}
+.dummy{
+    margin-bottom: 50px;
+}
+.speakerCard{
+    margin-bottom: 100px;
+    align-items: center;
+    justify-content: center;
+}
+
+.speakerCard p{
+    max-width: 620px;
+}
+.dummyItem{
+    width: 190px;
+}
+
+.speakerImg{
+    width: 200px;
+    height: 200px;
+}
+
+.speakerInfo h3{
+    margin-bottom: 20px;
+}
+
+/* Why Attend Page */
+
+.reasons{
+    margin-bottom: 150px;
+}
+
+ol{
+    list-style: decimal;
+    line-height: 2;
+    margin: 20px 0px 0px 10px;
+}
+
+/* About */
+
+.teamLead{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    gap: 50px;
+    margin-bottom: 70px;
+    width: 100%;
+}
+
+.aboutInfo{
+    margin-top: 50px;
+}
+.aboutInfo p{
+    max-width: 700px;
+}
+
+.aboutImg{
+    width: 350px;
+    height: 250px;
+}
+
+.info p{
+    margin-top: 20px;
+}
+.aims{
+    max-width: 700px;    
+    margin: 0 auto;
+    margin-top: 100px;
+    margin-bottom: 200px;
+    flex-direction: column;align-items: center;
+}
+.aims h3{
+    margin: 10px 0px 10px 10px;
+}
+
+
+
+
+/* Media Queries */
+
+@media screen and (max-width : 1100px) {
+    .dummyItem{
+        display: none;
+    }
+    .dummy{
+        text-align: center;
+    }
+    .speakerCard, .dummy{
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width : 990px) {
+    .dummyItem{
+        width: 150px;
+    }
+    
+    .speakerImg{
+        width: 150px;
+        height: 150px;
+    }
+
+    .speakerCard{
+        gap: 50px;
+    }
+
+    ol li{
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width : 950px) {
+
+    .showcaseTxt h1{
+        font-size: 25px;
+    }
+    .showcaseImg{
+        width: 350px;
+        height: 250px;
+    }
+
+    .reasons{
+        flex-direction: column-reverse;
+        height: 478px;
+    }
+
+    .cartContent{
+        margin-top: 0px !important;
+    }
+
+    .cartImg{
+        align-self: end;
+        width: 298px;
+        height: 278px;
+        position: relative;
+        top: 150px;
+        left: 50px;
+        z-index: -1;
+    }
+
+    .info{
+        max-width: 400px;
+    }
+
+    ol li{
+        font-size: 15px;
+    }
+
+    .teamLead{
+        margin: 150px 0px 100px 0px;
+    }
+
+    .aboutImg{
+        width: 300px;
+        height: 230px;
+    }
+}
+
+@media screen and (max-width : 750px) {
+    .bdyContainer{
+        margin-top: 100px;
+    }
+
+    .bdyContainer h2{
+        font-size: 17px;
+    }
+
+    .showcase{
+        flex-direction: column;
+    }
+
+    .showcaseTxt{
+        text-align: center;
+    }
+
+    .showcaseTxt p{
+        margin: 0 auto;
+        margin-top: 10px;
+        max-width: 400px !important;
+    }
+
+    .showcaseBtn{
+        justify-content: center;
+    }
+
+    .showcaseImg{
+        width: 250px;
+        height: 250px;
+        position: relative;
+        left: -50px;
+    }
+    .sponsorsContainer h2,
+    .speakersContainer h2
+    {
+        font-size: 18px;
+    }
+
+    .nutzyLogo{
+        width: 100px;
+        height: 40px;
+    }
+
+    .cowrywiseLogo{
+        width: 130px;
+        height: 25px;
+    }
+
+    .wiiCreateLogo{
+        width: 130px;
+        height: 31px;
+    }
+
+    .card{
+        width: 200px;
+        height: 300px;
+        padding: 40px 20px;
+    }
+
+    .card p{
+        line-height: 1.8;
+    }
+
+    .frame{
+        width: 100px;
+        height: 100px;
+    }
+
+    .infoImg{
+        width: 100px;
+        height: 200px;
+    }
+
+    .aims{
+        margin-top: 50px;
+    }
+
+    .aims ul{
+        list-style: decimal;
+    }
+    p, .aims li{
+        font-size: 13px;
+    }
+
+    h3{
+        font-size: 16px;
+    }
+
+    .illustration{
+        width: 200px;
+        height: 200px;
+        top : -150px
+    }
+
+    .abs{
+        position: absolute;
+        background: rgba(0, 0, 0, 0.815);
+        width: 50%;
+        height: 100vh;
+        z-index: 3;
+        top: 0;
+        right: 0;
+        justify-content: center;
+        gap: 20px;
+        flex-direction: column;
+        display: none;
+    }
+
+    .burger{
+        display: flex;
+    }
+    .clrBlue{
+        color: var(--clrBlue) !important;
+    }
+
+    .header li a{
+        color: var(--clrWht);
+    }
+
+    .contact{
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .speakerImg{
+        width: 100px;
+        height: 100px;
+    }
+
+    .speakerInfo h3{
+        text-align: center;
+    }
+
+    ol li{
+        font-size: 14px;
+    }
+
+    .aboutInfo{
+        display: block;
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .aboutInfo p{
+        max-width: 100vh !important;
+    }
+
+    .aboutImg{
+        display: none;
+    }
+
+    .footerContent h5,
+    .footerContent li,
+    .footerContent h6
+    {
+        font-size: 13px;
+    }
+    .footerContent li a{
+        font-size: 12px;
+    }
+
+    .footerContent h6{
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width : 650px)
+{
+    .showcaseImg{
+        width: 200px;
+        height: 200px;
+    }
+    .speakers{
+        gap: 30px;
+    }
+
+    .infoContainer{
+        width: 100%;
+    }
+
+    .infoContent{
+        width: 100%;
+        padding: 0px 40px;
+    }
+
+}
+
+
+@media screen and (max-width : 450px) {
+    .bdyContainer h2{
+        font-size: 16px;
+        margin: 0px 0px 15px 20px;
+    }
+
+    .illustration{
+        width: 170px;
+        height: 170px;
+        top: -130px;
+    }
+    h3{
+        font-size: 14px;
+    }
+
+    h4{
+        font-size: 14px;
+    }
+    p{
+        font-size: 12px;
+    }
+
+    .header li a{
+        font-size: 12px;
+    }
+    .btn{
+        width: 100px;
+        height: 35px;
+        font-size: 12px;
+    }
+
+    .infoContent{
+        gap: 10px;
+    }
+
+    .showcase{
+        gap: 20px;
+    }
+
+    .showcaseTxt h1{
+        font-size: 22px;
+    }
+
+    .showcaseTxt a{
+        font-size: 12px;
+    }
+
+    .showcaseImg{
+        width: 180px;
+        height: 180px;
+    }
+
+    .sponsorsContainer .flex{
+        gap: 10px;
+    }
+
+    .sponsors{
+        flex-direction: column;
+        gap: 30px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .speakersContainer{
+        height: auto;
+        padding: 40px 0px;
+    }
+
+    .speakers{
+        flex-direction: column;
+    }
+
+    .card{
+        width: 180px;
+        height: 280px;
+        padding: 20px;
+    }
+
+    .frame{
+        width: 80px;
+        height: 80px;
+    }
+
+    .infoImg{
+        width: 90px;
+        height: 150px;
+    }
+
+    .reasons{
+        height: 450px;
+    }
+
+    ol li{
+        font-size: 13px;
+    }
+    .cartImg{
+        display: none;
+    }
+
+    .footerContent{
+        width: 80%;
+    }
+
+    .footerContent h5,
+    .footerContent li,
+    .footerContent h6
+    {
+        font-size: 12px;
+    }
+}
+
+
+
+
+

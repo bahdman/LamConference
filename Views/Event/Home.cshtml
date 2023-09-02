@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - LAM</title>
+    <link rel="stylesheet" href="~/css/index.css">
+</head>
+<body>
+    <header>
+        <div id="header" class="header flex">
+            <div class="logo">
+                <h1>LAM Conference</h1>
+            </div>
+
+            <nav>
+                <ul id="ul" class="flex abs">
+                    <li><a class="clrBlue" asp-action="">Home</a></li>
+                    <li><a asp-action="About">About</a></li>
+                    <li><a asp-action="OurSpeakers">Our Speaker</a></li>
+                    <li><a asp-action="WhatToExpect">What To Expect</a></li>
+                    <li class="aside"><a asp-controller="Registration" asp-action="Register"><button class="btn">Register</button></a></li>
+                </ul>
+            </nav>
+
+            <div id="ham" class="burger flex">
+                <div id="fcross" class="fcross"></div>
+                <div id="scross" class="scross"></div>
+            </div>
+        </div>
+    </header>
+    <div id="bg" class="bgCover"></div>
+
+    <div class="showcase flex">
+        <div class="showcaseTxt">
+            <h1>
+                Something <span class="clrBlue caps">hooge</span> Is Coming To 
+                McPherson University in November!
+            </h1>
+            <p>
+                Welcome to the "Life After McPherson" Conference, 
+                where we delve into the exciting journey
+                that awaits you beyond your academic years.
+            </p>
+
+            <div class="flex showcaseBtn">
+                <button class="btn">Register</button>
+                <a asp-action="HowTo" class="clrBlue">Registration Guidelines</a>
+            </div>
+        </div>
+
+        <div class="showcaseImg">
+            <img src="~/images/view-3d-confident-businessman.png" alt="Image from freepik.com">
+        </div>
+    </div>
+
+    <div class="sponsorsContainer">
+        <div class="flex">
+            <h2>Official Partners/Sponsors</h2>
+            <div class="sponsors flex">
+                <div class="sponsorLogo nutzyLogo"><img src="~/images/nutzy-logo.png" alt="Nutzy Logo"></div>
+                <div class="sponsorLogo cowrywiseLogo"><img src="~/images/cowrywise.png" alt="Cowrywise Logo"></div>
+                <div class="sponsorLogo wiiCreateLogo"><img src="~/images/wii-create-logo.png" alt="Wii Create Logo"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="speakersContainer">
+        <div class="flex">
+            <h2>Our Speakers</h2>
+
+            <div class="speakers flex">
+                <div class="cowryCard card">
+                    <div class="frame"><img src="~/images/cowrywiseFrame.png" alt="Cowrywise"></div>
+
+                    <div class="speakerInfo centerTxt">
+                        <h4>Cowrywise</h4>
+                        <p>Fintech Company</p>
+                    </div>
+                </div>
+                
+                <div class="simiCard card">
+                    <div class="frame"><img src="~/images/simi.png" alt="Simi Alabi"></div>
+
+                    <div class="speakerInfo">
+                        <h4>Simi Alabi</h4>
+                        <p>Published Author, Product Manager and alumni McPherson University</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="infoContainer">
+        <div class="infoContent flex">
+            <div class="infoImg"><img src="fun-3d-illustration-cartoon-teenage-girl-with-rain-gear.png" alt="Illustration"></div>
+
+            <div class="infoTxt">
+                <h4>Date: 23rd November 2023</h4>
+                <h4>Venue: University's Hall</h4>
+                <a asp-controller="Registration" asp-action="Register"><button class="btn">Register</button></a>
+                <h3 class="caps">tell a friend to tell another friend that Something <br> <span class="clrBlue">hooge</span>
+                    is coming to McPherson university
+                </h3>
+            </div>
+        </div>
+    </div>
+        
+
+    <footer>
+        <div class="footer">
+            <div class="footerContent">
+                <div class="info">
+                    <h5>
+                        If you have any questions or inquiries about the "Life After McPherson" Conference,
+                        we're here to help. Reach out to our dedicated team for assistance:
+                    </h5>
+
+                    <div class="contact flex">
+                        <ul>
+                            <li>Contact Us:</li>
+                            <li>08038293748</li>
+                            <li>lamconference321@gmail.com</li>
+                        </ul>
+                       
+                        <div class="quickLinks">
+                            <ul>
+                                <li>Quick Links</li>
+                                <li><a class="clrBlue" asp-action="About">About</a></li>
+                                <li><a class="clrBlue" asp-action="WhatToExpect">what To Expect</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h6> &copy;LamConference 2023. All Rights Reserved</h6>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/js/index.js"></script>
+</body>
+</html>

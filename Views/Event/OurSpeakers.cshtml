@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Speakers - LAM</title>
+    <link rel="stylesheet" href="~/css/index.css">
+</head>
+<body>
+    <header>
+        <div id="header" class="header flex">
+            <div class="logo">
+                <h1>LAM Conference</h1>
+            </div>
+
+            <nav>
+                <ul id="ul" class="flex abs">
+                    <li><a  asp-action="Home" class="clrBlue">Home</a></li>
+                    <li><a asp-action="About">About</a></li>
+                    <li><a asp-action="OurSpeakers">Our Speaker</a></li>
+                    <li><a asp-action="WhatToExpect">What To Expect</a></li>
+                    <li class="aside"><a asp-controller="Registration" asp-action="Register"><button class="btn">Register</button></a></li>
+                </ul>
+            </nav>
+
+            <div id="ham" class="burger flex">
+                <div id="fcross" class="fcross"></div>
+                <div id="scross" class="scross"></div>
+            </div>
+        </div>
+    </header>
+    <div id="bg" class="bgCover"></div>
+
+    <div class="bdyContainer">
+        <div class="speakerContent">
+            <div class="flex dummy">
+                <div class="dummyItem"></div>
+                <h2>Meet Our Speakers</h2>
+            </div>
+
+            <div class="speakerCard flex">
+                <div class="speakerImg">
+                    <img src="~/images/cowrywiseFrame.png" alt="Cowrywise Image">
+                </div>
+
+                <div class="speakerInfo">
+                    <h3 class="clrBlue">Cowrywise</h3>
+                    <p>
+                        Mosimileoluwa Alabi, a Climate Educator and Product Marketing Specialist is a key
+                        voice in raising the next generation of eco-leaders through education for sustainable 
+                        development. She is the Founder of RecyclubNg, an initiative that is geared towards 
+                        grooming the next generation of children and teenagers to be eco-conscious leaders 
+                        in Nigeria by utilising climate education as a tool for sustainable development. 
+                        She is also a Global Youth Ambassador for TheirWorld. At the core of her work are 
+                        three things: Education, Sustainable Development and Environmental Sustainability.
+                        As an educator with over 7 years of teaching experience, she developed a curriculum to
+                        help parents and teachers teach children about climate change and the environment. 
+                        When Mosimileoluwa is not teaching climate change and environmental sustainability, 
+                        she works with startups to enhance their product marketing efforts.
+                    </p>
+                </div>                
+            </div>
+
+            <div class="speakerCard flex">
+                <div class="speakerImg">
+                    <img src="~/images/simi.png" alt="Simi Alabi Image">
+                </div>
+
+                <div class="speakerInfo">
+                    <h3>Simi Alabi</h3>
+                    <p>
+                        Mosimileoluwa Alabi, a Climate Educator and Product Marketing Specialist is a key
+                        voice in raising the next generation of eco-leaders through education for sustainable 
+                        development. She is the Founder of RecyclubNg, an initiative that is geared towards 
+                        grooming the next generation of children and teenagers to be eco-conscious leaders 
+                        in Nigeria by utilising climate education as a tool for sustainable development. 
+                        She is also a Global Youth Ambassador for TheirWorld. At the core of her work are 
+                        three things: Education, Sustainable Development and Environmental Sustainability.
+                        As an educator with over 7 years of teaching experience, she developed a curriculum to
+                        help parents and teachers teach children about climate change and the environment. 
+                        When Mosimileoluwa is not teaching climate change and environmental sustainability, 
+                        she works with startups to enhance their product marketing efforts.
+                    </p>
+                </div>
+            </div>
+
+            @* <div class="speakerCard flex">
+                <div class="speakerImg">
+                    <img src="~/images/divine.png" alt="Divine Image">
+                </div>
+
+                <div class="speakerInfo">
+                    <h3>Divine Egbuna</h3>
+                    <p>
+                        Divine leverages an innovative and creative approach
+                        toward developing solutions for modern problems aimed
+                        at ensuring Products and Businesses are scalable in the
+                        global space.
+                        He is skilled at delivering solutions on lines such as Product
+                        Management, Growth Marketing and Innovation, Market
+                        Entry and Penetration Strategy, Branding, Effective
+                        Communication.
+                        Divine also doubles as a Product Management Facilitator
+                        and has engagements with top product schools and aided
+                        the transitioning journey of over 900 students in the last
+                        one year.
+                        He's currently a product manager at OneHealthNG where
+                        he facilitates product development and product led
+                        growth for the company.
+                    </p>
+                </div>
+            </div> *@
+        </div>
+    </div>
+        
+
+    <footer>
+        <div class="footer">
+            <div class="footerContent">
+                <div class="info">
+                    <h5>
+                        If you have any questions or inquiries about the "Life After McPherson" Conference,
+                        we're here to help. Reach out to our dedicated team for assistance:
+                    </h5>
+
+                    <div class="contact flex">
+                        <ul>
+                            <li>Contact Us:</li>
+                            <li>08038293748</li>
+                            <li>lamconference321@gmail.com</li>
+                        </ul>
+                       
+                        <div class="quickLinks">
+                            <ul>
+                                <li>Quick Links</li>
+                                <li><a asp-action="About" class="clrBlue">About</a></li>
+                                <li><a asp-action="WhatToExpect" class="clrBlue">what To Expect</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h6> &copy;LamConference 2023. All Rights Reserved</h6>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/js/index.js"></script>
+</body>
+</html>

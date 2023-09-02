@@ -17,6 +17,9 @@ var special = document.getElementById('special');
 // Ends here
 
 
+var table = document.getElementById('table');
+
+
 function RemoveAccess() {
     zIndex.style.zIndex = "-5";
 }
@@ -37,6 +40,19 @@ function RemoveBlur()
 
 // Ends Here
 
+
+//Restrict Table
+function RestrictTable()
+{
+    table.style.zIndex = "-2";
+}
+
+function ShowTable()
+{
+    table.style.zIndex = "1";
+}
+
+
 hamburger.addEventListener('click', ()=>{
     i++
     if (i % 2 == 1) {
@@ -48,10 +64,11 @@ hamburger.addEventListener('click', ()=>{
         document.body.style.overflow = "hidden";
         // Ends here
         
-        if(special != null && zIndex != null)
+        if(special != null && zIndex != null && table != null)
         {
             AddBlur()
             RemoveAccess()
+            RestrictTable()
         }    
         if (special != null) {
             AddBlur()
@@ -59,6 +76,10 @@ hamburger.addEventListener('click', ()=>{
         if(zIndex != null)
         {
             RemoveAccess()
+        }
+        if(table != null)
+        {
+            RestrictTable()
         }
                
     }
@@ -68,10 +89,11 @@ hamburger.addEventListener('click', ()=>{
         scross.classList.remove("sshow", "red") 
         bg.classList.remove("bgshow")
         document.body.style.overflow = "visible"
-        if(special != null && zIndex != null)
+        if(special != null && zIndex != null && table != null)
         {
             RemoveBlur()
             AllowAccess()
+            ShowTable()
         }    
         if (special != null) {
             RemoveBlur()
@@ -80,8 +102,14 @@ hamburger.addEventListener('click', ()=>{
         {
             AllowAccess()
         }
+        if(table != null)
+        {
+            ShowTable()
+        }
+        i=0;
     }  
 })
+
 
 
 

@@ -7,10 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - LamConference</title>
     <link rel="stylesheet" href="~/css/style.css">
-    <!-- @* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/LamConference.styles.css" asp-append-version="true" /> *@ -->
-
 </head>
 <body>
     <header>
@@ -19,10 +15,11 @@
                 <div class="logo"><h1><span class="caps">lam </span>Conference</h1></div>
 
                 <ul id="ul" class="flex">
-                    <li><a asp-action="">About</a></li>
-                    <li><a asp-action="">Our Sponsors</a></li>
-                    <li><a asp-action="">What To Expect</a></li>
-                    <li class="aside"><a asp-action=""><button class="btn redBtn">Register</button></a></li>
+                    <li class="aside">
+                        <form asp-controller="Account" asp-action="LogOut" method="post">
+                            <button class="btn redBtn">Logout</button>
+                        </form>
+                    </li>
                 </ul>
 
                 <div id="hamburger">
@@ -32,7 +29,6 @@
             </div>
         </nav>
     </header>
-    <div id="bg" class="bg"></div>
 
 
     <div id="zIndex" class="flex generate mainContainer">
@@ -52,10 +48,6 @@
                         </div>
                         <button class="btn blackBtn">Generate</button>
                     </form>
-                    @* <form class="flex" asp-action="Register">
-                        <input asp-for="RefID" placeholder="Reference ID">
-                        <button class="btn blackBtn">Register</button> 
-                    </form> *@
                 </div>
             </div>
         </div>

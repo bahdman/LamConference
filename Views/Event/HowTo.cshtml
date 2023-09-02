@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How To Register - LAM</title>
+    <link rel="stylesheet" href="~/css/index.css">
+</head>
+<body>
+    <header>
+        <div id="header" class="header flex">
+            <div class="logo">
+                <h1>LAM Conference</h1>
+            </div>
+
+            <nav>
+                <ul id="ul" class="flex abs">
+                    <li><a asp-action="" class="clrBlue">Home</a></li>
+                    <li><a asp-action="About">About</a></li>
+                    <li><a asp-action="OurSpeakers">Our Speaker</a></li>
+                    <li><a asp-action="WhatToExpect">What To Expect</a></li>
+                    <li class="aside"><a asp-controller="Registration" asp-action="Register"><button class="btn">Register</button></a></li>
+                </ul>
+            </nav>
+
+            <div id="ham" class="burger flex">
+                <div id="fcross" class="fcross"></div>
+                <div id="scross" class="scross"></div>
+            </div>
+        </div>
+    </header>
+    <div id="bg" class="bgCover"></div>
+
+    <div class="bdyContainer specialMargin">
+        <div class="bdyContent">
+            
+            <h2>How To Register</h2>
+            <div class="regContent shadow">
+                <div class="illustration absolute">
+                    <img src="~/images/view-3d-businessman-taking-selfie-removebg-preview.png" alt="Image from freePik.com">
+                </div>
+
+                <h3>Lam Conference Registration: User Guide</h3>
+                <p>
+                    Welcome to the Conference Registration Website user guide. <br> This guide will assist 
+                    you in navigating the registration process with ease. <br>
+                    Follow the steps below to successfully register for the conference.
+                </p>
+
+                <h4>Step 1: Getting Started</h4>
+                <p>
+                    To begin the registration process, ensure you have the reference ID provided 
+                    to you upon payment. <br> This unique ID is essential for validating
+                    your registration.
+                </p>
+
+                <h4>Step 2: Reference ID Validation</h4>
+                <p>
+                    Click on the <span class="clrBlue">Register </span>button,
+                    you will be directed to the Reference ID validation page. <br>
+                    Enter the reference ID in the designated field. <br>
+                    Click the "Submit" button. <br>
+                    If the reference ID is valid, you will proceed to the conference registration page. <br> In case of 
+                    an invalid ID or any error messages, double-check the ID and try again. <br>
+                    If the issue persists, contact our support team at [conference Email].
+                </p>
+
+                <h4>Step 3: Conference Registration</h4>
+                <p>
+                    Congratulations on successfully validating your reference ID!. <br>
+                    Now, you can proceed with the conference registration: <br>
+                    Fill out the registration form with your personal details. <br>
+                    Provide accurate contact information, including email and phone number. <br>
+                    Review the information provided to ensure accuracy. <br>
+                    Click the "Submit" button to finalize your registration.
+                </p>
+
+                <h4>Step 4: Confirmation Page</h4>
+                <p>
+                    Once you've successfully submitted your registration, a confirmation page will appear: <br>
+                    If you need to make any changes, please contact our support team as soon as possible.
+                </p>
+
+                <h4>Step 5: Email Confirmation</h4>
+                <p>
+                    After completing the registration process, you will receive an email confirmation at the provided email address. <br>
+                    This email will include: <br>
+                    Confirmation of your successful registration. <br>
+                    An overview of the conference details, including date, time, and venue. <br>
+                    If you did not get a mail, contact our support team as soon as possible.
+                </p>
+
+                <h5 class="clrBlue mgTop">Need Help?</h5>
+                <p>
+                    If you encounter any difficulties during the registration process or have questions, don't hesitate 
+                    to reach out to our support team. <br> We're here to assist you.
+                </p>
+
+                <p class="mgTop">
+                    Thank you for choosing to be a part of our conference. We look forward to your participation and hope you 
+                    have a rewarding experience! <br>
+                    <span class="clrBlue">Note: </span> This user guide is provided for your convenience. The content and steps 
+                    described may vary slightly depending on updates or changes to the website.
+                </p>
+                
+
+            </div>
+        </div>
+        
+    </div>
+
+    <footer>
+        <div class="footer">
+            <div class="footerContent">
+                <div class="info">
+                    <h5>
+                        If you have any questions or inquiries about the "Life After McPherson" Conference,
+                        we're here to help. Reach out to our dedicated team for assistance:
+                    </h5>
+
+                    <div class="contact flex">
+                        <ul>
+                            <li>Contact Us:</li>
+                            <li>08038293748</li>
+                            <li>lamconference321@gmail.com</li>
+                        </ul>
+                       
+                        <div class="quickLinks">
+                            <ul>
+                                <li>Quick Links</li>
+                                <li><a class="clrBlue" asp-action="About">About</a></li>
+                                <li><a class="clrBlue" asp-action="WhatToExpect">what To Expect</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h6> &copy;LamConference 2023. All Rights Reserved</h6>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/js/index.js"></script>
+</body>
+</html>

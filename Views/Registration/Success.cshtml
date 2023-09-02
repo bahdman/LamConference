@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - LamConference</title>
+    <title>LAM Conference</title>
     <link rel="stylesheet" href="~/css/style.css" asp-append-version="true">
 </head>
 <body>
@@ -13,9 +13,10 @@
                 <div class="logo"><h1><span class="caps">lam </span>Conference</h1></div>
 
                 <ul id="ul" class="flex">
-                    <li><a asp-action="">About</a></li>
-                    <li><a asp-action="">Our Sponsors</a></li>
-                    <li><a asp-action="">What To Expect</a></li>
+                    <li><a asp-controller="Event" asp-action="Home">Home</a></li>
+                    <li><a asp-controller="Event" asp-action="About">About</a></li>
+                    <li><a asp-controller="Event" asp-action="OurSpeakers">Our Speakers</a></li>
+                    <li><a asp-controller="Event" asp-action="WhatToExpect">What To Expect</a></li>
                 </ul>
 
                 <div id="hamburger">

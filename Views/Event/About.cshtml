@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - LAM</title>
+    <link rel="stylesheet" href="~/css/index.css">
+</head>
+<body>
+    <header>
+        <div id="header" class="header flex">
+            <div class="logo">
+                <h1>LAM Conference</h1>
+            </div>
+
+            <nav>
+                <ul id="ul" class="flex abs">
+                    <li><a  asp-action="Home" class="clrBlue">Home</a></li>
+                    <li><a asp-action="About">About</a></li>
+                    <li><a asp-action="OurSpeakers">Our Speaker</a></li>
+                    <li><a asp-action="WhatToExpect">What To Expect</a></li>
+                    <li class="aside"><a asp-controller="Registration" asp-action="Register"><button class="btn">Register</button></a></li>
+                </ul>
+            </nav>
+
+            <div id="ham" class="burger flex">
+                <div id="fcross" class="fcross"></div>
+                <div id="scross" class="scross"></div>
+            </div>
+        </div>
+    </header>
+    <div id="bg" class="bgCover"></div>
+
+    <div class="bdyContainer cartContent">
+
+        <div class="teamLead flex">
+            <div class="speakerImg"><img src="~/images/eniola.png" alt="Eniola Dipo-Adedoyin" srcset=""></div>
+            <div class="aboutLead">
+                <h2>Eniola Dipo-Adedoyin</h2>
+                <p>Convener, Founder, Team Lead of LAM Conference</p>
+            </div>
+        </div>
+
+        <div class="flex about">
+
+            <div class="info aboutInfo">
+                <h3>About <span class="clrBlue">LAM</span> Conference</h3>
+
+                <p>
+                    Life after McPherson University Conference (LAM) is a 
+                    student empowerment conference tailored to educate 
+                    students on Life After School, what to expect after 
+                    graduation and how they can maximize their stay 
+                    on campus.
+                </p>
+                
+            </div>
+            <div class="aboutImg">
+                <img src="~/images/funny-illustration-3d-cartoon-backpacker 1.png" alt="Boy with cart">
+            </div>
+        </div>
+
+        <div class="aims flex">
+            <h3>Aims of <span class="clrBlue">LAM</span> Conference</h3>
+            <ul>
+                <li>To equip students to be better versions of themselves and take charge of their lives.</li>
+                <li>To give them an insight into the world outside the four walls of a university.</li>
+                <li>To help students chart a path for their future while on campus.</li>
+                <li>To enable students to prepare for the life after school and the labor market at large.</li>
+                <li>To help students position themselves for internship opportunities</li>
+            </ul>
+        </div>
+    </div>
+        
+
+    <footer>
+        <div class="footer">
+            <div class="footerContent">
+                <div class="info">
+                    <h5>
+                        If you have any questions or inquiries about the "Life After McPherson" Conference,
+                        we're here to help. Reach out to our dedicated team for assistance:
+                    </h5>
+
+                    <div class="contact flex">
+                        <ul>
+                            <li>Contact Us:</li>
+                            <li>08038293748</li>
+                            <li>lamconference321@gmail.com</li>
+                        </ul>
+                       
+                        <div class="quickLinks">
+                            <ul>
+                                <li>Quick Links</li>
+                                <li><a asp-action="About" class="clrBlue">About</a></li>
+                                <li><a asp-action="WhatToExpect" class="clrBlue">what To Expect</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h6>&copy;LamConference 2023. All Rights Reserved</h6>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/js/index.js"></script>
+</body>
+</html>
