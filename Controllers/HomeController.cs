@@ -14,16 +14,16 @@ public class HomeController : Controller
         _logger = logger;
     }
 
-    [Authorize]
-    public IActionResult Index()
-    {
-        return View();
-    }
+    // [Authorize]
+    // public IActionResult Index()
+    // {
+    //     return View();
+    // }
 
-    public IActionResult Privacy()
-    {
-        return View();
-    }
+    // public IActionResult Privacy()
+    // {
+    //     return View();
+    // }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()

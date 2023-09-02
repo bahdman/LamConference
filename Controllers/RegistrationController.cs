@@ -62,6 +62,15 @@ namespace LamConference.Controllers{
         {
             if(ModelState.IsValid)
             {
+                EmailViewModel model = new(){
+                    Email = viewModel.Email
+                };
+                var emailValid = await _service.ValidateEmail(model);
+                if(!emailValid)
+                {
+                    ModelState.AddModelError("Email", "Email already exists");
+                    return View(viewModel);
+                }
                 var instance = await _service.Registration(viewModel);
                 if(instance)
                 {

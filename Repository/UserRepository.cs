@@ -136,7 +136,7 @@ namespace LamConference.Repository{
         public async Task<List<ITDashboardViewModel>> ITDisplayProperties()
         {
             var displayProperties = await DisplayProperties();
-            var estimatedAmount = "FROM DB"; //Big TODO:: would come straight from the DB.
+            var estimatedAmount = displayProperties[0].TotalRegisteredStudents * 1000; //Big TODO:: would come straight from the DB.
             List<ITDashboardViewModel> model = new(){};
             if(displayProperties.Count < 1)
             {
@@ -162,7 +162,7 @@ namespace LamConference.Repository{
                     AvailableRefID = item.AvailableRefID,
                     TotalGeneratedID = item.TotalGeneratedID,
                     TotalRegisteredStudents = item.TotalRegisteredStudents,
-                    EstimatedAmount = 3000000
+                    EstimatedAmount = estimatedAmount
                 };
 
                 model.Add(instance);

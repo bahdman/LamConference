@@ -5,6 +5,9 @@ using LamConference.ViewModel;
 using LamConference.HandlerModels;
 using System.Net.Mail;
 using System.Net;
+using QRCoder;
+using System.Drawing;
+using Microsoft.EntityFrameworkCore;
 
 namespace LamConference.Repository{
     public class RegistrationRepository : ReferenceIDHandler, IRegistration, IMailService{
@@ -36,6 +39,17 @@ namespace LamConference.Repository{
                 return false;
             }
             return false;
+        }
+
+        public async Task<bool> ValidateEmail(EmailViewModel model)
+        {
+            var isEmailInDb = await _context.StudentData.AnyAsync(m => m.Email == model.Email);
+            if(isEmailInDb)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         public async Task<bool> Registration(RegistrationViewModel viewModel)
@@ -78,6 +92,19 @@ namespace LamConference.Repository{
             return false;
         }
 
+        // public string Qr()
+        // {
+        //     using(QRCodeGenerator qrCodeGenerator = new ())
+        //     using(QRCodeData qData = qrCodeGenerator.CreateQrCode("Test, Worked !!!", QRCodeGenerator.ECCLevel.Q) )
+        //     using(QRCode code = new QRCode(qData))
+        //     {
+        //         Bitmap img = code.GetGraphic(20);
+        //         string qImg = "data:image/png;base64," + Convert.ToHexString(img);
+        //     }
+
+        //     return qImg;
+        // }
+
         public async  Task<bool> SendMail(MailHandlerModel model)
         {
             //Big TODO::Add exception handler.
@@ -103,6 +130,8 @@ namespace LamConference.Repository{
             StreamReader reader = new(filePath);
             var mailBody = await reader.ReadToEndAsync();
             reader.Close();
+
+            mailBody = mailBody.Replace("[Name]", model.Name);
 
             
             message.Subject = "Hello from Lam Conference";
