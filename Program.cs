@@ -17,6 +17,7 @@ builder.Services.AddScoped<IAccount, AccountRepository>();
 builder.Services.AddScoped<IIdGenerator, ReferenceIDRepository>();
 builder.Services.AddScoped<IRegistration, RegistrationRepository>();
 builder.Services.AddScoped<IUser, UserRepository>();
+builder.Services.AddScoped<IQrCodeGenerator, QrCodeGeneratorRepository>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 // var test = WebApplication.CreateBuilder(Host.CreateApplicationBuilder().Environment.EnvironmentName = "Production");
