@@ -19,40 +19,40 @@ namespace LamConference.Controllers{
             _service = service;
         }
 
-        public ActionResult Register()
-        {
-            return View();
-        }
+        // public ActionResult Register()
+        // {
+        //     return View();
+        // }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel viewModel)
-        {
-            if(ModelState.IsValid)
-            {
-                RoleViewModel model = new()
-                {
-                    Role = viewModel.Role
-                };
+        // [HttpPost]
+        // [ValidateAntiForgeryToken]
+        // public async Task<ActionResult> Register(RegisterViewModel viewModel)
+        // {
+        //     if(ModelState.IsValid)
+        //     {
+        //         RoleViewModel model = new()
+        //         {
+        //             Role = viewModel.Role
+        //         };
 
-                var rolehandler = new RoleHandler();
-                var role = rolehandler.RoleCheck(model);
+        //         var rolehandler = new RoleHandler();
+        //         var role = rolehandler.RoleCheck(model);
 
-                if(role == "Nill")
-                {
-                    return View(viewModel);
-                }
+        //         if(role == "Nill")
+        //         {
+        //             return View(viewModel);
+        //         }
 
-                bool instance = await _service.Register(viewModel, role);
+        //         bool instance = await _service.Register(viewModel, role);
 
-                if(instance == true)
-                {
-                    return RedirectToAction(nameof(Login));
-                }                  
-            }
+        //         if(instance == true)
+        //         {
+        //             return RedirectToAction(nameof(Login));
+        //         }                  
+        //     }
 
-            return View(viewModel);
-        }
+        //     return View(viewModel);
+        // }
 
         private async Task<string> GetSignedInUserRole()
         { 
