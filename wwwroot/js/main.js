@@ -4,6 +4,9 @@ var hamburger = document.getElementById('hamburger');
 var ul = document.getElementById('ul');
 var fcross = document.getElementById('fcross');
 var scross = document.getElementById('scross');
+var inst = document.getElementById('inst');
+var btnNone = document.getElementById('btnNone');
+var btnShow = document.getElementById('btnShow');
 var i = 0;
 //Ends here
 
@@ -110,7 +113,20 @@ hamburger.addEventListener('click', ()=>{
     }  
 })
 
+if(btnShow != null && btnNone != null)
+{
+    btnShow.addEventListener('click', ()=>{
+        inst.classList.remove('show')
+        zIndex.classList.add('show')
+    
+    })
+    btnNone.addEventListener('click', ()=>{
+        inst.classList.add('show')
+        zIndex.classList.remove('show')
+    
+    })
 
+}
 
 
 

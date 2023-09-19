@@ -53,7 +53,10 @@ namespace LamConference.Models{
         MassCommunication,
         [Display(Name = "Microbiology")]
         Micorbiology,
+        [Display(Name = "Nursing")]
+        Nursing,
         [Display(Name = "Software Engineering")]
         SoftwareEngineering
+        
     }
 }

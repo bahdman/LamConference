@@ -325,6 +325,12 @@ p, .aims li{
     transform: translateY(-10px);
 }
 
+.card h5{
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
 .frame{
     width: 130px;
     height: 130px;
@@ -408,6 +414,10 @@ p, .aims li{
 
 .speakerContent h2{
     font-weight: 500;
+}
+
+.speakerCard p {
+    text-align: justify;
 }
 
 .speakerCard, .dummy{
@@ -837,6 +847,10 @@ ol{
         width: 180px;
         height: 280px;
         padding: 20px;
+    }
+
+    .card h4{
+        text-align: center;
     }
 
     .frame{
