@@ -31,10 +31,12 @@ namespace LamConference.Models{
     public enum Department{
         [Display(Name = "Accounting")]
         Accounting = 1,
+        [Display(Name = "Biochemstry")]
+        Biochemistry,
+        [Display(Name = "Biotechnology")]
+        Biotechnology,
         [Display(Name = "Business Administration")]
         BusinessAdministration,
-        [Display(Name = "Biochemistry")]
-        Biochemistry,
         [Display(Name = "Computer Science")]
         ComputerScience,
         [Display(Name = "Cyber Security")]
@@ -43,18 +45,32 @@ namespace LamConference.Models{
         Economics,
         [Display(Name ="Finance")]
         Finance,
+        [Display(Name ="Industrial Chemistry")]
+        IndustrialChemistry,
+        [Display(Name ="Industrial Mathematics")]
+        IndustrialMathematics ,
         [Display(Name = "Information Technology")]
         InformationTechnology,
         [Display(Name = "International Relations")]
         InternationalRelations,
+        [Display(Name = "Law")]
+        Law,
+        [Display(Name = "Language")]
+        Language,        
         [Display(Name = "Marketing")]
         Marketing,
         [Display(Name = "Mass Communication")]
         MassCommunication,
+        [Display(Name = "Medical Laboratory Science")]
+        MedLabScience,
         [Display(Name = "Microbiology")]
         Micorbiology,
         [Display(Name = "Nursing")]
         Nursing,
+        [Display(Name = "Public Health")]
+        PublicHealth,
+        [Display(Name = "Religion and Peace Studies")]
+        ReligionandPeaceStudies,
         [Display(Name = "Software Engineering")]
         SoftwareEngineering
         
