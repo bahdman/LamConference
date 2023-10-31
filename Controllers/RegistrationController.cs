@@ -80,6 +80,24 @@ namespace LamConference.Controllers{
             return View(viewModel);
         }
 
+        public ActionResult CheckCode()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> ValidateCode(IDViewModel model)
+        {
+            if(ModelState.IsValid)
+            {
+                var response = await _service.CheckCode(model);
+                return View(response);
+            }
+
+            return View(model);
+            
+        }
+
         public ActionResult Success()
         {
             return View();

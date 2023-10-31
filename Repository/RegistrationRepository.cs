@@ -100,7 +100,7 @@ namespace LamConference.Repository{
 
             } catch(Exception ex)
             {
-                Console.Write(ex.Message[0]);
+                Console.Write(ex.ToString());
                 return false;
             }             
         }
@@ -156,8 +156,57 @@ namespace LamConference.Repository{
             }catch(Exception ex)
             {
                 Console.Write(ex.Message[0]);
-                return false;
+                return true;
             }           
+        }
+
+        public async Task<CheckRegViewModel> CheckCode(IDViewModel viewModel)
+        {
+            var usedCodes = await _context.StudentData.FindAsync(viewModel.RefID);
+            var unusedCodes = await _context.ReferenceIDs.FindAsync(viewModel.RefID);
+
+            if(usedCodes == null && unusedCodes == null)
+            {
+                CheckRegViewModel dummyData = new CheckRegViewModel()
+                {
+                    RefID = viewModel.RefID,
+                    FirstName = "NOT valid",
+                    LastName = "NOT valid",
+                    Email = "NOT valid"
+                    // Department = Department.Accounting,
+                    // Level = Level.FifthYear
+                };
+
+                return dummyData;
+            }
+
+            if(unusedCodes != null)
+            {
+                CheckRegViewModel dummyData = new CheckRegViewModel()
+                {
+                    RefID = unusedCodes.Id,
+                    FirstName = "Not used",
+                    LastName = "Not used",
+                    Email = "Not used"
+                    // Department = Department.Accounting,
+                    // Level = Level.FifthYear
+                };
+
+
+                return dummyData;
+            }
+
+            CheckRegViewModel modelItem = new CheckRegViewModel()
+            {
+                RefID = usedCodes.RefId,
+                FirstName = usedCodes.FirstName,
+                LastName = usedCodes.LastName,
+                Email = usedCodes.Email,
+                Department = usedCodes.Department,
+                Level = usedCodes.Level
+            };
+
+            return modelItem;         
         }
     }
 }

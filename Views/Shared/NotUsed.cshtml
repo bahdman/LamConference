@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LAM Conference</title>
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="header flex">
+                <div class="logo"><h1><span class="caps">lam </span>Conference</h1></div>
+
+                <ul id="ul" class="flex">
+                    <li><a asp-controller="Event" asp-action="Home">Home</a></li>
+                    <li><a asp-controller="Event" asp-action="About">About</a></li>
+                    <li><a asp-controller="Event" asp-action="OurSpeakers">Our Speakers</a></li>
+                    <li><a asp-controller="Event" asp-action="WhatToExpect">What To Expect</a></li>
+                </ul>
+
+                <div id="hamburger">
+                    <div id="fcross" class="cross fcross"></div>
+                    <div id="scross" class="cross scross"></div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="bg" id="bg"></div>
+
+
+        <div class="mainContainer centerTxt">
+            <div class="msg successMsg">
+                <h2>Code is STILL valid for use</h2>
+            </div>
+        </div>
+    <script src="~/js/main.js"></script>
+</body>
+</html>

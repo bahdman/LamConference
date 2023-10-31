@@ -1,0 +1,76 @@
+@model LamConference.ViewModel.CheckRegViewModel
+
+ <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>LAM - Code checker</title>
+        <link rel="stylesheet" href="~/css/style.css" asp-append-version="true">
+    </head>
+    <body>
+        <div class="bg" id="bg"></div>
+        <header class="dashboardHeader">
+            <nav>
+                <div class="header flex">
+                    <div class="logo"><h1><span class="caps">lam </span>Conference</h1></div>
+
+                    <ul id="ul" class="flex">
+                        <li><a asp-controller="Event" asp-action="Home">Home</a></li>
+                        <li><a asp-controller="Event" asp-action="About">About</a></li>
+                        <li><a asp-controller="Event" asp-action="OurSpeakers">Our Speakers</a></li>
+                        <li><a asp-controller="Event" asp-action="WhatToExpect">What To Expect</a></li>
+                    </ul>
+
+                    <div id="hamburger">
+                        <div id="fcross" class="cross fcross"></div>
+                        <div id="scross" class="cross scross"></div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        @* <div id="bgCover" class="bgCover show"></div> *@
+        <div class="bg" id="bg"></div>
+    
+        
+            <div class="displayContainer">
+                <div class="statistics">
+                    <div class="statisticsCards flex">
+                        <h2>Code has been used by: </h2>
+
+                        
+                </div>
+    
+                <div class="dashTblContainer">
+                    <div class="tableContainer">
+                        <div id="table" class="table viewRefIDtbl">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>@Html.DisplayNameFor(model => model.RefID)</th>
+                                        <th>@Html.DisplayNameFor(model => model.FirstName)</th>
+                                        <th>@Html.DisplayNameFor(model => model.LastName)</th>
+                                        <th>@Html.DisplayNameFor(model => model.Email)</th>
+                                        <th>@Html.DisplayNameFor(model => model.Department)</th>
+                                        <th>@Html.DisplayNameFor(model => model.Level)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>@Html.DisplayFor(model => model.RefID)</td>
+                                        <td>@Html.DisplayFor(model => model.FirstName)</td>
+                                        <td>@Html.DisplayFor(model => model.LastName)</td>
+                                        <td>@Html.DisplayFor(model => model.Email)</td>
+                                        <td>@Html.DisplayFor(model => model.Department)</td>
+                                        <td>@Html.DisplayFor(model => model.Level)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+            <script src="~/js/main.js"></script>
+    </body>
+</html>
