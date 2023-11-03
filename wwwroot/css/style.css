@@ -95,9 +95,14 @@ button:hover, .btn:hover{
     background: var(--clrRed);
 }
 
-.redBtn:active{
+.blueBtn{
+    background: var(--clrBlue);
+}
+
+.redBtn:active, .blueBtn:active{
     background: var(--clrBlk) !important;
 }
+
 /* header */
 
 header{
@@ -297,6 +302,21 @@ a{
 }
 
 /* View All Ref IDs Page */
+
+.formContainer{
+    margin-bottom: 30px;
+}
+
+.formContainer input{
+    width: 250px;
+    height: 40px;
+}
+
+.formBtn{
+    width: 100px;
+    height: 40px;
+    margin-left: 30px;
+}
 
 .tblContainer{
     margin: auto;
@@ -786,6 +806,10 @@ tbody td{
     .table{
         font-size: 13px;
     }
+
+    .formContainer input, .formBtn{
+        height: 35px;
+    }
     
 }
 
@@ -886,6 +910,17 @@ tbody td{
     }
     .lg{
         margin-top: 150px;
+    }
+
+    .formContainer input{
+        width: 200px;
+    }
+
+    .formContainer input, .formBtn{
+        height: 30px;
+    }
+    .formBtn{
+        margin-left: 10px;
     }
 
 }

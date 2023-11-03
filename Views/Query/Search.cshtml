@@ -1,0 +1,80 @@
+@model IEnumerable<LamConference.ViewModel.QueryResultViewModel>
+
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>LamConference</title>
+        <link rel="stylesheet" href="~/css/style.css" asp-append-version="true">
+    </head>
+    <body>
+        <div class="bg" id="bg"></div>
+        <header class="dashboardHeader">
+            <nav>
+                <div class="header flex">
+                    <div class="logo"><h1><span class="caps">lam </span>Conference</h1></div>
+    
+                    <ul id="ul" class="flex">
+                        <li><a class="clrBlue" asp-action="">Home</a></li>
+                        <li><a asp-action="About">About</a></li>
+                        <li><a asp-action="OurSpeakers">Our Speakers</a></li>
+                        <li><a asp-action="WhatToExpect">What To Expect</a></li>
+                    </ul>
+
+                    <div id="hamburger">
+                        <div id="fcross" class="cross fcross"></div>
+                        <div id="scross" class="cross scross"></div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <div id="bgCover" class="bgCover show"></div>
+    
+        
+            <div class="displayContainer">              
+    
+                <div class="dashTblContainer">
+                    <div class="tableContainer">
+                        <div id="table" class="table viewRefIDtbl">
+
+                            <div class="formContainer">
+                                <form asp-action="Search">
+                                    <input type="text" name="searchTerm" value="@ViewBag.SearchTerm">
+                                    <button class="formBtn btn blueBtn" >Search</button>
+                                </form>
+                            </div>
+
+
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>S/N</th>
+                                        <th>@Html.DisplayNameFor(model => model.FirstName)</th>
+                                        <th>@Html.DisplayNameFor(model => model.LastName)</th>
+                                        <th>@Html.DisplayNameFor(model => model.Level)</th>
+                                        <th>@Html.DisplayNameFor(model => model.Department)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach(var item in Model)
+                                    {
+                                        <tr>
+                                            <td></td>
+                                            <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.LastName)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.Level)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.Department)</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+
+                        </div>
+                    </div>
+            </div>
+            <script src="~/js/main.js"></script>
+    </body>
+</html>
